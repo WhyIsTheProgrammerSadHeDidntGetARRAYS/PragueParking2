@@ -1,0 +1,602 @@
+[
+  {
+    "ParkingWindow": 1,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 2,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 3,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 4,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 5,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 6,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 7,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 8,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 9,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 10,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 11,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 12,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 13,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 14,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 15,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 16,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 17,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 18,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 19,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 20,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 21,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 22,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 23,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 24,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 25,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 26,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 27,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 28,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 29,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 30,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 31,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 32,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 33,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 34,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 35,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 36,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 37,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 38,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 39,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 40,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 41,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 42,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 43,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 44,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 45,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 46,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 47,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 48,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 49,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 50,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 51,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 52,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 53,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 54,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 55,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 56,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 57,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 58,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 59,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 60,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 61,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 62,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 63,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 64,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 65,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 66,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 67,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 68,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 69,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 70,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 71,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 72,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 73,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 74,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 75,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 76,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 77,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 78,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 79,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 80,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 81,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 82,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 83,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 84,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 85,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 86,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 87,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 88,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 89,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 90,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 91,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 92,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 93,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 94,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 95,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 96,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 97,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 98,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 99,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  },
+  {
+    "ParkingWindow": 100,
+    "Space": 4,
+    "AvailableSpace": 4,
+    "VehiclesParked": []
+  }
+]

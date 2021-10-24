@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "TC3UfKNTzAmBds36EF0V0OaywLiAhBNjh6/SRgEXUbAuM2Rs9i88GSRBMB4k46zjesur8xGq+x4Ha6SYaQM7pg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Admin\\source\\repos\\Prague_Parking_2.0_App\\Prague_Parking_2.0\\Prague_Parking_2.0.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Admin\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}
