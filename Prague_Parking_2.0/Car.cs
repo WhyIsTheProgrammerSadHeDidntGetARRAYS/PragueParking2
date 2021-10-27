@@ -4,10 +4,10 @@ namespace Prague_Parking_2._0
 {
     public class Car : Vehicle
     {
-        public Car() 
-        {
-            Size = 4;
-        }
+        //public Car() // för ett test..
+        //{
+        //    Size = 4;
+        //}
         public Car(string regNumber)
         {
             VehicleType = "CAR";

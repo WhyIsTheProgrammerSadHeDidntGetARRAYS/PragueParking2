@@ -16,3 +16,5 @@ C:\Users\Admin\source\repos\Prague_Parking_2.0_App\Prague_Parking_2.0\obj\Debug\
 C:\Users\Admin\source\repos\Prague_Parking_2.0_App\Prague_Parking_2.0\obj\Debug\net5.0\Prague_Parking_2.0.genruntimeconfig.cache
 C:\Users\Admin\source\repos\Prague_Parking_2.0_App\Prague_Parking_2.0\bin\Debug\net5.0\Newtonsoft.Json.dll
 C:\Users\Admin\source\repos\Prague_Parking_2.0_App\Prague_Parking_2.0\obj\Debug\net5.0\Prague_Parking_2.0.csproj.CopyComplete
+C:\Users\Admin\source\repos\Prague_Parking_2.0_App\Prague_Parking_2.0\bin\Debug\net5.0\Spectre.Console.dll
+C:\Users\Admin\source\repos\Prague_Parking_2.0_App\Prague_Parking_2.0\bin\Debug\net5.0\Wcwidth.dll
