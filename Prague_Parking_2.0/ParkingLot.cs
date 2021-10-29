@@ -121,8 +121,7 @@ namespace Prague_Parking_2._0
             AnsiConsole.Write(table);
 
             Table t1 = new Table();
-            t1.AddColumns("[grey]EMPTY SPOT =[/] [green]GREEN[/]", "[grey]FULL SPOT =[/] [red]RED[/]",
-                "[grey]HALF SPACE =[/] [yellow]YELLOW[/]").Centered().Alignment(Justify.Center);
+            t1.AddColumns("[grey]EMPTY SPOT =[/] [green]GREEN[/]", "[grey]FULL SPOT =[/] [red]RED[/]").Centered().Alignment(Justify.Center);
             AnsiConsole.Write(t1);
 
             Table newTable = new Table().Centered();
