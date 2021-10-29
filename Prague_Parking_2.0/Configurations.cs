@@ -11,30 +11,41 @@ namespace Prague_Parking_2._0
 {
     public static class Configurations
     {
-        private const string priceFilePath = @"../../../PriceList.txt";
-        private const string ParkingList = @"../../../Parkinglist.json";
-        private const string ConfigFile = @"../../../Config.json";
+        public static int ParkingHouseSize { get; set; }
+        public static int ParkingSpotSize { get; set; }
+        public static int CarCost { get; set; }
+        public static int Mccost { get; set; }
 
-        public static List<ParkingSpot> ReadParkinglist()//returns a list of parkinglist and parklinglist properties(parkinghouse file)
+        public const string ConfigFilePath = @"../../../Textfiles/Config.json";
+        public const string PriceFilePath = @"../../../Textfiles/PriceList.txt";
+
+        public static void SetConfigValues()
         {
-            string temp = File.ReadAllText(ParkingList);
-            var tempList = JsonConvert.DeserializeObject<List<ParkingSpot>>(temp);
-            return tempList;
+            dynamic jsonFile = JsonConvert.DeserializeObject(File.ReadAllText(ConfigFilePath));
+            JToken getParkingSpotSize = jsonFile.SelectToken("ParkingspotSize");
+            JToken getPHouseSize = jsonFile.SelectToken("ParkingSpots");
+            ParkingSpotSize = (int)getParkingSpotSize;
+            ParkingHouseSize = (int)getPHouseSize;
         }
-        public static void UpdateParkingList<T>(List<T> list) //generic type för att slippa referera till parkingspots klassen...
+        public static void SetPrices()
         {
-            string temp = File.ReadAllText(ParkingList);
-            string parkingHouseString = JsonConvert.SerializeObject(list, Formatting.Indented);
-            File.WriteAllText(ParkingList, parkingHouseString);
+            List<string> priceList = GetPriceList();
+            foreach (var price in priceList)
+            {
+                string[] split = price.Split('=');
+                if (split.Contains("car"))
+                {
+                    CarCost = int.Parse(split[1]);
+                }
+                if (split.Contains("motorcycle"))
+                {
+                    CarCost = int.Parse(split[1]);
+                }
+            }
         }
-        //public static void SetConfigValues()
-        //{
-        //    dynamic jsonFile = JsonConvert.DeserializeObject(File.ReadAllText(ConfigFile));
-        //    JToken setPHouseSize = jsonFile.SelectToken("ParkingSpots");
-        //}
-        public static List<string> GetPriceFromFile()
+        public static List<string> GetPriceList()
         {
-            List<string> priceList = File.ReadAllLines(priceFilePath).ToList();
+            List<string> priceList = File.ReadAllLines(PriceFilePath).ToList();
             return priceList;
         }
     }

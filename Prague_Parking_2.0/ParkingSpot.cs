@@ -9,13 +9,14 @@ namespace Prague_Parking_2._0
     public class ParkingSpot
     {
         public int ParkingWindow { get; set; }
-        public int Space { get; set; }
+        public int TotalSpace { get; } //behöver ingen setter just nu, då space per ruta alltid är 4
         public int AvailableSpace { get; set; }
-        public List<Vehicle> VehiclesParked { get; set; } = new List<Vehicle>(); //lite fult kanske, men ger mig en lista som en property, där jag kan lägga till objekt på respektive parkeringsplats
+        public List<Vehicle> VehiclesParked { get; set; } = new List<Vehicle>(); 
 
         public ParkingSpot()
         {
-
+            TotalSpace = Configurations.ParkingSpotSize;
+            AvailableSpace = Configurations.ParkingSpotSize;
         }
 
         public void AddVehicle(Vehicle vehicle)//lägga till ett fordon
@@ -29,11 +30,5 @@ namespace Prague_Parking_2._0
             VehiclesParked.Remove(vehicle);
             AvailableSpace += vehicle.Size;
         }
-
-        public override string ToString()
-        {
-            return "";
-        }
-
     }
 }
