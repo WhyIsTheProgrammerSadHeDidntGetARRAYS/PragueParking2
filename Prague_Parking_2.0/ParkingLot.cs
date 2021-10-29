@@ -57,7 +57,7 @@ namespace Prague_Parking_2._0
                 Console.ReadKey();
             }
         }
-        public void Remove() //temporär
+        public void Remove() //temporär. Ska ju kombineras med sökmetoden
         {
             Console.WriteLine("Type in registrationnumber of the vehicle you'd like to remove");
             string regnum = Console.ReadLine();
@@ -134,10 +134,6 @@ namespace Prague_Parking_2._0
                 if (ParkingList[i].AvailableSpace == 4)
                 {
                     parkingSpotColorMarking = "green";
-                }
-                else if(ParkingList[i].AvailableSpace > 0 && ParkingList[i].AvailableSpace < 4)
-                {
-                    parkingSpotColorMarking = "yellow";
                 }
                 else
                 {
