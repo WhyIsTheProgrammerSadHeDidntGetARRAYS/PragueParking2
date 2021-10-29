@@ -9,13 +9,13 @@ namespace Prague_Parking_2._0
     public class ParkingSpot
     {
         public int ParkingWindow { get; set; }
-        public int TotalSpace { get; } //behöver ingen setter just nu, då space per ruta alltid är 4
+        public int ParkingSpotSize { get; } //behöver ingen setter just nu, då space per ruta alltid är 4
         public int AvailableSpace { get; set; }
         public List<Vehicle> VehiclesParked { get; set; } = new List<Vehicle>(); 
 
         public ParkingSpot()
         {
-            TotalSpace = Configurations.ParkingSpotSize;
+            ParkingSpotSize = Configurations.ParkingSpotSize;
             AvailableSpace = Configurations.ParkingSpotSize;
         }
 

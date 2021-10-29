@@ -33,11 +33,11 @@ namespace Prague_Parking_2._0
         {
             Console.WriteLine("Type in registrationnumber for your Car");
             string regnum = Console.ReadLine();
-            Car newCar = new Car(regnum);
-            ParkingSpot ps = FirstAvailableSlot(newCar);
+            Car car = new Car(regnum);
+            ParkingSpot ps = FirstAvailableSlot(car);
             if (ps != null)
             {
-                ps.AddVehicle(newCar);
+                ps.AddVehicle(car);
                 ManageFileData.UpdateParkingList(ParkingList); 
                 Console.WriteLine("Your vehicle has been parked at parkingwindow {0}", ps.ParkingWindow);
                 Console.ReadKey();
@@ -47,11 +47,11 @@ namespace Prague_Parking_2._0
         {
             Console.WriteLine("Type in registrationnumber for your Motorcycle");
             string regnum = Console.ReadLine();
-            MC newCar = new MC(regnum);
-            ParkingSpot ps = FirstAvailableSlot(newCar);
+            MC mc = new MC(regnum);
+            ParkingSpot ps = FirstAvailableSlot(mc);
             if (ps != null)
             {
-                ps.AddVehicle(newCar);
+                ps.AddVehicle(mc);
                 ManageFileData.UpdateParkingList(ParkingList);
                 Console.WriteLine("Your vehicle has been parked at parkingwindow {0}", ps.ParkingWindow);
                 Console.ReadKey();
