@@ -59,7 +59,6 @@ namespace Prague_Parking_2._0
         }
         public void Remove() //temporär
         {
-            
             Console.WriteLine("Give me the regnumber of vehicle to remove");
             string regNum = Console.ReadLine();
             (Vehicle veh, ParkingSpot spot) = GetVehicleInfo(regNum);
@@ -70,29 +69,26 @@ namespace Prague_Parking_2._0
                 ManageFileData.UpdateParkingList(ParkingList);
             }
         }
-        public void MoveVehicle() //jobbar på det D:
+        public void MoveVehicle() //jobbar på det D: borde nog skaffa en extra metod för att kolla ifall fordonet får plats i ÖNSKAD ruta
         {
             Console.WriteLine("Give me the regnumber of vehicle to move");
             string regNum = Console.ReadLine();
             (Vehicle veh, ParkingSpot spot) = GetVehicleInfo(regNum);
 
-            Console.WriteLine("Spot to move too");
+            Console.WriteLine("Type in your desired spot to move too [1- 100]");
             int parkingSpot;
             bool validation = int.TryParse(Console.ReadLine(), out parkingSpot) && veh != null;
             if (validation)
             {
-                ParkingSpot moveToo = new ParkingSpot();
-                moveToo.ParkingWindow = parkingSpot - 1;
-                if(ParkingList[parkingSpot].AvailableSpace >= veh.Size)
+                if(ParkingList[parkingSpot - 1].AvailableSpace >= veh.Size)
                 {
-                    moveToo.VehiclesParked.Add(veh);
+                    ParkingList[parkingSpot - 1].AddVehicle(veh);
                     spot.RemoveVehicle(veh); // tar bort det från aktuella platsen
                     ManageFileData.UpdateParkingList(ParkingList);
                 }
             }
-
         }
-        public (Vehicle, ParkingSpot) GetVehicleInfo(string regNum)
+        private (Vehicle, ParkingSpot) GetVehicleInfo(string regNum)
         {
             var look =
                 from p in ParkingList
