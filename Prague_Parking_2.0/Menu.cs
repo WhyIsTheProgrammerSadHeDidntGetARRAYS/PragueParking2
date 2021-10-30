@@ -25,9 +25,9 @@ namespace Prague_Parking_2._0
             var choice = AnsiConsole.Prompt(
                 new SelectionPrompt<string>()
                 .Title("[grey]Prague Parking 2.0[/]\n\nUse [green](Arrowkeys)[/] to browse through the menu. Hit [green](Enter)[/] to pick something.")
-                .PageSize(6)
+                .PageSize(7)
                 .AddChoices(new[] {
-                    "Park Vehicle", "Our prices", "Search for vehicle", "Print Vehicles", "Remove","Exit Program" }));
+                    "Park Vehicle", "Move vehicle", "Our prices", "Search for vehicle", "Print Vehicles", "Remove","Exit Program" }));
             
             return choice;
         }
@@ -43,12 +43,16 @@ namespace Prague_Parking_2._0
                     parkinglot.AddMC();
                     break;
 
+                case "Move vehicle":
+                    parkinglot.MoveVehicle();
+                    break;
+
                 case "Our prices":
                     parkinglot.PrintPrice();
                     break;
 
                 case "Search for vehicle":
-                    parkinglot.Search();
+                    parkinglot.SearchForVehicle();
                     Console.ReadKey();
                     break;
                 

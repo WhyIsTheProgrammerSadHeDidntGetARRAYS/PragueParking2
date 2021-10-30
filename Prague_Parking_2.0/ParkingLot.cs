@@ -7,7 +7,7 @@ using Spectre.Console;
 
 namespace Prague_Parking_2._0
 {
-    public class ParkingLot 
+    public class ParkingLot
     {
         List<ParkingSpot> ParkingList { get; set; } = ManageFileData.ReadParkinglist(); //we TRY to set the list equal to objects of parkingspots from parkingfile
 
@@ -19,7 +19,7 @@ namespace Prague_Parking_2._0
                 AddNewParkinglot();
             }
         }
-        
+
         public ParkingSpot FirstAvailableSlot(Vehicle vehicle) //kommer fungera för bil, mc och cykel, men inte buss
         {
             ParkingSpot spot = ParkingList.Find(x => x.AvailableSpace >= vehicle.Size); //hittar första plats där fordonet får plats. 
@@ -38,7 +38,7 @@ namespace Prague_Parking_2._0
             if (ps != null)
             {
                 ps.AddVehicle(car);
-                ManageFileData.UpdateParkingList(ParkingList); 
+                ManageFileData.UpdateParkingList(ParkingList);
                 Console.WriteLine("Your vehicle has been parked at parkingwindow {0}", ps.ParkingWindow);
                 Console.ReadKey();
             }
@@ -57,44 +57,83 @@ namespace Prague_Parking_2._0
                 Console.ReadKey();
             }
         }
-        public void Remove() //temporär. Ska ju kombineras med sökmetoden
+        public void Remove() //temporär
         {
-            Console.WriteLine("Type in registrationnumber of the vehicle you'd like to remove");
-            string regnum = Console.ReadLine();
-
-            //var search =
-            //    from p in ParkingList
-            //    from v in p.VehiclesParked
-            //    where v.RegNr == regnum
-            //    select v;
-            foreach (var spot in ParkingList)
+            
+            Console.WriteLine("Give me the regnumber of vehicle to remove");
+            string regNum = Console.ReadLine();
+            (Vehicle veh, ParkingSpot spot) = GetVehicleInfo(regNum);
+            
+            if(veh != null)
             {
-                foreach (var vehicle in spot.VehiclesParked)
-                {
-                    if (vehicle.RegNr == regnum)
-                    {
-                        spot.RemoveVehicle(vehicle);
-                        ManageFileData.UpdateParkingList(ParkingList);
-                        break;
-                    }
-                }
+                spot.RemoveVehicle(veh);
+                ManageFileData.UpdateParkingList(ParkingList);
             }
         }
-        public void Search() //temporär sökmetod
+        public void MoveVehicle() //jobbar på det D:
+        {
+            Console.WriteLine("Give me the regnumber of vehicle to move");
+            string regNum = Console.ReadLine();
+            (Vehicle veh, ParkingSpot spot) = GetVehicleInfo(regNum);
+
+            Console.WriteLine("Spot to move too");
+            int parkingSpot;
+            bool validation = int.TryParse(Console.ReadLine(), out parkingSpot) && veh != null;
+            if (validation)
+            {
+                ParkingSpot moveToo = new ParkingSpot();
+                moveToo.ParkingWindow = parkingSpot - 1;
+                if(ParkingList[parkingSpot].AvailableSpace >= veh.Size)
+                {
+                    moveToo.VehiclesParked.Add(veh);
+                    spot.RemoveVehicle(veh); // tar bort det från aktuella platsen
+                    ManageFileData.UpdateParkingList(ParkingList);
+                }
+            }
+
+        }
+        public (Vehicle, ParkingSpot) GetVehicleInfo(string regNum)
+        {
+            var look =
+                from p in ParkingList
+                from v in p.VehiclesParked
+                where v.RegNr == regNum
+                select (v, p);
+
+            foreach (var item in look)
+            {
+                if (item.v.RegNr == regNum)
+                {
+                    return (item.v, item.p);
+                }
+            }
+            return (null, null);
+        }
+        public void SearchForVehicle()
         {
             Console.WriteLine("Type in registration number to search for");
             string regNumber = Console.ReadLine();
+            var check = Search(regNumber);
 
+            foreach (var item in check)
+            {
+                if (item.RegNr == regNumber)
+                {
+                    Console.WriteLine("It's a match. Vehicle was found!\nVehicleinfo: {0}, RegNr: {1}", item.VehicleType, item.RegNr);
+                    return;
+                }
+            }
+            Console.WriteLine("Vehicle not found!");
+        }
+        private IEnumerable<Vehicle> Search(string regNumber) //temporär sökmetod
+        {
             var search =
                 from p in ParkingList
                 from v in p.VehiclesParked
                 where v.RegNr == regNumber
                 select v;
 
-            foreach (var item in search)
-            {
-                Console.WriteLine("It's a match. Vehicle was found!\nVehicleinfo: {0}, RegNr: {1}", item.VehicleType, item.RegNr); //kanske ska skaffa en override string metod i vehicle, elr derived classes så man slipper loopa såhär för att skriva ut
-            }
+            return search;
 
         }
         private List<Vehicle> GetParkedVehicles()

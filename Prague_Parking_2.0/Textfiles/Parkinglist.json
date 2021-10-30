@@ -2,15 +2,8 @@
   {
     "ParkingWindow": 1,
     "ParkingSpotSize": 4,
-    "AvailableSpace": 2,
-    "VehiclesParked": [
-      {
-        "VehicleType": "MOTORCYCLE",
-        "RegNr": "hehehe",
-        "CheckIn": "2021-10-29T19:55:37.8954088+02:00",
-        "Size": 2
-      }
-    ]
+    "AvailableSpace": 4,
+    "VehiclesParked": []
   },
   {
     "ParkingWindow": 2,
