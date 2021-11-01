@@ -9,39 +9,37 @@ using Newtonsoft.Json.Linq;
 
 namespace Prague_Parking_2._0
 {
+    record ParkingHouseConfig(int ParkingspotSize, int ParkingSpots);
+    record ParkingData(ParkingHouseConfig Configurations);
+    record PriceConfig(int CarPricePerHour, int MCPricePerHour);
+    record PriceData(PriceConfig Prices);
+    
     public static class Configurations
     {
         public static int ParkingHouseSize { get; set; }
         public static int ParkingSpotSize { get; set; }
         public static int CarCost { get; set; }
         public static int Mccost { get; set; }
+        public static int FreeMinutes { get; set; }
 
-        public const string ConfigFilePath = @"../../../Textfiles/Config.json";
-        public const string PriceFilePath = @"../../../Textfiles/PriceList.txt";
+        private const string ConfigFilePath = @"../../../Textfiles/Config.json";
+        private const string PriceFilePath = @"../../../Textfiles/PriceList.txt";
+        private const string Pricings = @"../../../Textfiles/Prices.json";
 
         public static void SetConfigValues()
         {
-            dynamic jsonFile = JsonConvert.DeserializeObject(File.ReadAllText(ConfigFilePath));
-            JToken getParkingSpotSize = jsonFile.SelectToken("ParkingspotSize");
-            JToken getPHouseSize = jsonFile.SelectToken("ParkingSpots");
-            ParkingSpotSize = (int)getParkingSpotSize;
-            ParkingHouseSize = (int)getPHouseSize;
+            string json = File.ReadAllText(ConfigFilePath);
+            var data = JsonConvert.DeserializeObject<ParkingData>(json);
+            ParkingHouseSize = data.Configurations.ParkingSpots;
+            ParkingSpotSize = data.Configurations.ParkingspotSize;
+
         }
         public static void SetPrices()
         {
-            List<string> priceList = GetPriceList();
-            foreach (var price in priceList)
-            {
-                string[] split = price.Split('=');
-                if (split.Contains("car"))
-                {
-                    CarCost = int.Parse(split[1]);
-                }
-                if (split.Contains("motorcycle"))
-                {
-                    CarCost = int.Parse(split[1]);
-                }
-            }
+            string json = File.ReadAllText(Pricings);
+            var data = JsonConvert.DeserializeObject<PriceData>(json);
+            CarCost = data.Prices.CarPricePerHour;
+            Mccost = data.Prices.MCPricePerHour;
         }
         public static List<string> GetPriceList()
         {

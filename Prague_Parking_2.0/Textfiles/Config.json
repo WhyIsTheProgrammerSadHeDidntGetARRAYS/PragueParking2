@@ -1,3 +1,8 @@
-{ "ParkingspotSize": 4,
-  "ParkingSpots": 100
+{
+  "Configurations": {
+
+    "ParkingspotSize": 4,
+    "ParkingSpots": 100
+  }
+  
 }

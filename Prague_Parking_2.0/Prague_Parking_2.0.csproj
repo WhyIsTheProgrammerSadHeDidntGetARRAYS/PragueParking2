@@ -11,4 +11,6 @@
     <PackageReference Include="Spectre.Console" Version="0.42.0" />
   </ItemGroup>
 
+  <ProjectExtensions><VisualStudio><UserProperties textfiles_4config_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
+
 </Project>

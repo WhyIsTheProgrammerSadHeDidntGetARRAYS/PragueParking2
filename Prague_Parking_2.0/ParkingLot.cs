@@ -15,13 +15,17 @@ namespace Prague_Parking_2._0
         {
             if (ParkingList == null)//if list is empty, we create a new list empty list, and "draw" a new parkinglot
             {
-                ParkingList = new List<ParkingSpot>(capacity: 100);
+                ParkingList = new List<ParkingSpot>();
                 AddNewParkinglot();
+            }
+            else if(ParkingList.Count < Configurations.ParkingHouseSize)
+            {
+                ExpandParkingLot(); //jag kanske kan göra detta till ett menyval för skojs skull(att göra pshuet större/mindre)
             }
         }
 
-        public ParkingSpot FirstAvailableSlot(Vehicle vehicle) //kommer fungera för bil, mc och cykel, men inte buss
-        {
+        public ParkingSpot FirstAvailableSlot(Vehicle vehicle) //kommer fungera för bil, mc och cykel, men inte buss?
+        {                                                      //det kommer dock fungera ifall man har olika storlekar på parkeringsrutor
             ParkingSpot spot = ParkingList.Find(x => x.AvailableSpace >= vehicle.Size); //hittar första plats där fordonet får plats. 
             if (spot != null)
             {
@@ -95,7 +99,7 @@ namespace Prague_Parking_2._0
                 from v in p.VehiclesParked
                 where v.RegNr == regNum
                 select (v, p);
-
+            
             foreach (var item in look)
             {
                 if (item.v.RegNr == regNum)
@@ -201,12 +205,27 @@ namespace Prague_Parking_2._0
             Console.ReadKey();
             Console.CursorVisible = true;
         }
-        private void AddNewParkinglot()
+        private void AddNewParkinglot() //om det inte finns något i filen
         {
-            //int parkingHouseSize = config.SetConfigValues();
             for (int i = 0; i < Configurations.ParkingHouseSize; i++) //läs in settings från en fil som säger att storleken på parkeringshuset ska vara 100
             {
                 ParkingList.Add(new ParkingSpot { ParkingWindow = i + 1/*, AvailableSpace = 4*/ });
+            }
+        }
+        private void ExpandParkingLot() //om man i configfilen ökar antalet p-platser
+        {
+            for (int i = ParkingList.Count; i < Configurations.ParkingHouseSize; i++)
+            {
+                ParkingList.Add(new ParkingSpot { ParkingWindow = i + 1 });
+            }
+        }
+        private void DecreaseParkingLot()//kan bli problematiskt ifall det står någon på dem sista platserna
+        {
+            
+            for (int i = ParkingList.Count; i > Configurations.ParkingHouseSize; i--)
+            {
+                if (ParkingList[i] != null)
+                    ParkingList.RemoveAt(i);
             }
         }
     }

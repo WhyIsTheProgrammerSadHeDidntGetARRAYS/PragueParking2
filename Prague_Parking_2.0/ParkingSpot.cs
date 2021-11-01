@@ -11,6 +11,7 @@ namespace Prague_Parking_2._0
         public int ParkingWindow { get; set; }
         public int ParkingSpotSize { get; } //behöver ingen setter just nu, då space per ruta alltid är 4
         public int AvailableSpace { get; set; }
+        public int Height { get; set; }
         public List<Vehicle> VehiclesParked { get; set; } = new List<Vehicle>(); 
 
         public ParkingSpot()

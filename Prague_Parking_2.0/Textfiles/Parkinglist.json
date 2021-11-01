@@ -3,11 +3,12 @@
     "ParkingWindow": 1,
     "ParkingSpotSize": 4,
     "AvailableSpace": 2,
+    "Height": 0,
     "VehiclesParked": [
       {
         "VehicleType": "MOTORCYCLE",
-        "RegNr": "abc123",
-        "CheckIn": "2021-10-30T15:17:59.0641543+02:00",
+        "RegNr": "ayo12",
+        "CheckIn": "2021-10-31T15:35:03.6952731+01:00",
         "Size": 2
       }
     ]
@@ -15,595 +16,701 @@
   {
     "ParkingWindow": 2,
     "ParkingSpotSize": 4,
-    "AvailableSpace": 4,
-    "VehiclesParked": []
+    "AvailableSpace": 2,
+    "Height": 0,
+    "VehiclesParked": [
+      {
+        "VehicleType": "MOTORCYCLE",
+        "RegNr": "abc123",
+        "CheckIn": "2021-10-31T15:11:13.1551256+01:00",
+        "Size": 2
+      }
+    ]
   },
   {
     "ParkingWindow": 3,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 4,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 5,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 6,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 7,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 8,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 9,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 10,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 11,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 12,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 13,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 14,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 15,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 16,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 17,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 18,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 19,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 20,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 21,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 22,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 23,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 24,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 25,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 26,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 27,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 28,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 29,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 30,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 31,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 32,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 33,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 34,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 35,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 36,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 37,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 38,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 39,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 40,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 41,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 42,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 43,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 44,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 45,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 46,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 47,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 48,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 49,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 50,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 51,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 52,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 53,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 54,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 55,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 56,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 57,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 58,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 59,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 60,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 61,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 62,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 63,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 64,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 65,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 66,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 67,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 68,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 69,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 70,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 71,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 72,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 73,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 74,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 75,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 76,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 77,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 78,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 79,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 80,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 81,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 82,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 83,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 84,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 85,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 86,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 87,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 88,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 89,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 90,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 91,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 92,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 93,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 94,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 95,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 96,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 97,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 98,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 99,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   },
   {
     "ParkingWindow": 100,
     "ParkingSpotSize": 4,
     "AvailableSpace": 4,
+    "Height": 0,
     "VehiclesParked": []
   }
 ]
