@@ -11,7 +11,7 @@ namespace Prague_Parking_2._1
 {
     record ParkingHouseConfig(int ParkingspotSize, int ParkingSpots, int CarSize, int McSize, int BikeSize, int BusSize);
     record ParkingData(ParkingHouseConfig Configurations);
-    record PriceConfig(int CarPricePerHour, int MCPricePerHour);
+    record PriceConfig(int CarPricePerHour, int MCPricePerHour, int BikePricePerHour, int BusPricePerHour, int FreeParkingTimeInMinutes);
     record PriceData(PriceConfig Prices);
     public static class Configuration
     {
@@ -23,6 +23,8 @@ namespace Prague_Parking_2._1
         public static int BusSize { get; set; }
         public static int CarPrice { get; set; }
         public static int McPrice { get; set; }
+        public static int BikePrice { get; set; }
+        public static int BusPrice { get; set; }
         public static int FreeMinutes { get; set; }
 
         private const string ConfigFilePath = @"../../../Datafiles/config.json";
@@ -47,6 +49,10 @@ namespace Prague_Parking_2._1
             var data = JsonConvert.DeserializeObject<PriceData>(json);
             CarPrice = data.Prices.CarPricePerHour;
             McPrice = data.Prices.MCPricePerHour;
+            BikePrice = data.Prices.BikePricePerHour;
+            BusPrice = data.Prices.BusPricePerHour;
+            FreeMinutes = data.Prices.FreeParkingTimeInMinutes;
+
         }
         public static List<string> GetPriceList()
         {
