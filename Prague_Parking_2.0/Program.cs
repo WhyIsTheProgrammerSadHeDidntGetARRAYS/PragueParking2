@@ -16,11 +16,11 @@ namespace Prague_Parking_2._0
             Console.Title = "Prague Parking 2";
             Configurations.SetConfigValues();//TODO: handle exceptions when reading from files
             Configurations.SetPrices();
-            
+
             Menu menu = new Menu();
             while (true)
             {
-                menu.MenuChoices();
+                menu.MainMenuChoices();
             }
         }
     }

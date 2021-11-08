@@ -1,0 +1,8 @@
+{
+  "Prices": {
+    
+    "CarPricePerHour": 20,
+    "MCPricePerHour": 10,
+    "FreeParkingTimeInMinutes": 10
+  }
+}

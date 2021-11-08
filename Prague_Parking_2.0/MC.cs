@@ -9,10 +9,10 @@ namespace Prague_Parking_2._0
         //{
         //    Size = 2;
         //}
-        public MC(string regNumber)
+        public MC(string regNumber) : base(regNumber)
         {
             VehicleType = "MOTORCYCLE";
-            RegNr = regNumber;
+            //RegNr = regNumber;
             Size = 2;
             CheckIn = DateTime.Now;
             
@@ -20,7 +20,7 @@ namespace Prague_Parking_2._0
 
         public override string ToString()
         {
-            return "MOTORCYCLE|REGISTRATIONNUMBER: " + RegNr;
+            return "";
         }
     }
 }

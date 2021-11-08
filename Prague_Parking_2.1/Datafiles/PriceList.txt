@@ -1,0 +1,3 @@
+﻿Price for car is 20 czk per hour
+Price for motorcycle is 10 czk per hour
+free parkingtime = 10 minutes

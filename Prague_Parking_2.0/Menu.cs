@@ -9,17 +9,7 @@ namespace Prague_Parking_2._0
 {
     class Menu
     {
-        //private int SelectedIndex;
-        //private string MenuMessage;
-        //private string[] MenuOptions;
-
-        //public Menu(string menuMessage, string[] menuOptions)
-        //{
-        //    MenuMessage = menuMessage;
-        //    MenuOptions = menuOptions;
-        //    SelectedIndex = 0;
-        //}
-        private string MainMenu()
+        private string MainMenuOptions()
         {
             Console.Clear();
             var choice = AnsiConsole.Prompt(
@@ -31,16 +21,16 @@ namespace Prague_Parking_2._0
             
             return choice;
         }
-        public void MenuChoices()
+        public void MainMenuChoices()
         {
-            string menuChoice = MainMenu();
+            string menuChoice = MainMenuOptions();
             ParkingLot parkinglot = new ParkingLot();
             Console.Clear();
 
             switch (menuChoice)
             {
                 case "Park Vehicle":
-                    parkinglot.AddMC();
+                    ParkVehicleType();
                     break;
 
                 case "Move vehicle":
@@ -57,11 +47,11 @@ namespace Prague_Parking_2._0
                     break;
                 
                 case "Print Vehicles":
-                    parkinglot.PrintVehicles();
+                    parkinglot.ParkingLotOverview();
                     break;
 
                 case "Remove":
-                    parkinglot.Remove();
+                    parkinglot.CheckOutVehicle();
                     break;
 
                 case "Exit Program":
@@ -69,91 +59,36 @@ namespace Prague_Parking_2._0
                     break;
             }
         }
-        //försökte göra en meny själv, men blev mycket laggigare när man ska re-rendera/re painta "bilden"...
-        //private void DisplayMenuOptions()
-        //{
-        //    Console.WriteLine(MenuMessage);
-            
-        //    for (int i = 0; i < MenuOptions.Length; i++)
-        //    {
-        //        string currentIndexValue = MenuOptions[i];
-
-        //        if (SelectedIndex == i)
-        //        {
-        //            Console.ForegroundColor = ConsoleColor.Black;
-        //            Console.BackgroundColor = ConsoleColor.Green;
-        //        }
-        //        else
-        //        {
-        //            Console.ForegroundColor = ConsoleColor.White;
-        //            Console.BackgroundColor = ConsoleColor.Black;
-        //        }
-        //        Console.WriteLine($">> {currentIndexValue} <<");
-        //    }
-        //    Console.ResetColor();
-        //}
-        //private int Run()
-        //{
-        //    ConsoleKey keyInput;
-        //    do
-        //    {
-        //        Console.Clear();
-        //        DisplayMenuOptions();
-        //        Console.CursorVisible = false;
-
-        //        ConsoleKeyInfo keyInfo = Console.ReadKey(true);
-        //        keyInput = keyInfo.Key;
-        //        if (keyInput == ConsoleKey.DownArrow)
-        //        {
-        //            SelectedIndex++;
-        //            if (SelectedIndex == MenuOptions.Length)
-        //            {
-        //                SelectedIndex = MenuOptions.Length - 1;
-        //            }
-        //        }
-        //        else if (keyInput == ConsoleKey.UpArrow)
-        //        {
-        //            SelectedIndex--;
-        //            if (SelectedIndex < 0)
-        //            {
-        //                SelectedIndex = 0;
-        //            }
-        //        }
-
-
-        //    } while (keyInput != ConsoleKey.Enter);
-
-        //    Console.CursorVisible = true;
-        //    return SelectedIndex;
-        //}
-
-        //public void MenuChoice()
-        //{
-        //    int menuChoice = Run();
-        //    ParkingLot parkinglot = new ParkingLot();
-        //    Console.Clear();
-
-        //    switch (menuChoice)
-        //    {
-        //        case 0:
-        //            parkinglot.AddCar();
-        //            break;
-
-        //        case 1:
-        //            Configurations.GetPriceFromFile();
-        //            Console.ReadKey();
-        //            break;
-
-        //        case 2:
-        //            parkinglot.Search();
-        //            Console.ReadKey();
-        //            break;
-
-        //        case 3:
-        //            Environment.Exit(0);
-        //            break;
-        //    }
-
-        //}
+        public void ParkVehicleType()
+        {
+            UserDialogue.DisplayOption("PARK VEHICLE");
+            string regnum = UserDialogue.AskForRegNum();
+            ParkingLot pLot = new ParkingLot();
+            if (ParkingLot.IsValidRegNum(regnum))
+            {
+                var choice = AnsiConsole.Prompt(
+                new SelectionPrompt<string>()
+                .Title("[grey]Choose what type of vehicle you want to park[/]")
+                .PageSize(10)
+                .AddChoices(new[] {
+                    "Car", "Motorcycle"}));
+                switch (choice)
+                {
+                    case "Car":
+                        pLot.AddCar(regnum);
+                        break;
+                    
+                    case "Motorcycle":
+                        pLot.AddMC(regnum);
+                        break;
+                }
+            }
+            else
+            {
+                UserDialogue.ErrorMessage();
+                Console.ReadKey();
+            }
+        }
+        
     }
 }

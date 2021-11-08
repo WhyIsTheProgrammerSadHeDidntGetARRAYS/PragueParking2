@@ -8,17 +8,17 @@ namespace Prague_Parking_2._0
         //{
         //    Size = 4;
         //}
-        public Car(string regNumber)
+        public Car(string regNumber) : base(regNumber)
         {
             VehicleType = "CAR";
-            RegNr = regNumber;
+            //RegNr = regNumber;
             Size = 4;
             CheckIn = DateTime.Now;
         }
 
         public override string ToString()
         {
-            return "Regnummer: " + RegNr;
+            return "";
         }
     }
 }

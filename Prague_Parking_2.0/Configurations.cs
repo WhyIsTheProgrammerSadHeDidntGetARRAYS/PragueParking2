@@ -32,7 +32,6 @@ namespace Prague_Parking_2._0
             var data = JsonConvert.DeserializeObject<ParkingData>(json);
             ParkingHouseSize = data.Configurations.ParkingSpots;
             ParkingSpotSize = data.Configurations.ParkingspotSize;
-
         }
         public static void SetPrices()
         {
