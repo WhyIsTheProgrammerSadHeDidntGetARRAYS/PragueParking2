@@ -23,97 +23,84 @@ namespace Prague_Parking_2._1
             {
                 ExpandParkingLot(); //jag kanske kan göra detta till ett menyval för skojs skull(att göra pshuet större/mindre)
             }
+            ManageFileData.UpdateParkingList(ParkingList);
         }
         /// <summary>
         /// Find the first available slot for a small vehicle
         /// </summary>
         /// <param name="vehicle"></param>
         /// <returns></returns>
-        public ParkingSpot FirstAvailableSlot(Vehicle vehicle)
+        public ParkingSpot FindSmallVehicleSpot(Vehicle vehicle)
         {
             ParkingSpot spot = ParkingList.Find(x => x.AvailableSpace >= vehicle.Size);
             return spot;
         }
-
         /// <summary>
-        /// Finds the first parkingspot with room to park a bus
+        /// using a hashset to store parkingspots with enough space in sequence, to park a bigger vehicle
         /// </summary>
-        /// <returns>its index</returns>
-        private int FirstAvailableBusSpot()
+        /// <param name="vehicle"></param>
+        /// <returns>A HashSet of parkingspots</returns>
+        private HashSet<ParkingSpot> FindBigVehicleSpots(Vehicle vehicle)//teoretiskt sätt hade detta funkat med de små fordonen också
         {
+            var set = new HashSet<ParkingSpot>();
             int counter = 0;
-            for (int i = 0; i < ParkingList.Count - 1; i++)
+            int spotsInARow = vehicle.Size / Configuration.ParkingSpotSize;
+
+            foreach (var spot in ParkingList)
             {
-                if (ParkingList[i].AvailableSpace == Configuration.ParkingSpotSize &&
-                    ParkingList[i + 1].AvailableSpace == Configuration.ParkingSpotSize)
+                if (spot.AvailableSpace == Configuration.ParkingSpotSize)
                 {
                     counter++;
+                    set.Add(spot);
                 }
                 else
-                    counter = 0;
-
-                if (counter == 3)
                 {
-                    return i - 2;
+                    counter = 0;
+                    set.Clear();
                 }
-
+                if (counter == spotsInARow)
+                {
+                    return set;
+                }
             }
-            return -1;
-
+            return null;
         }
+
         /// <summary>
-        /// Handles the parking of a bus. Parks it 4 times, because thats what it takes....
+        /// Handles the parking of a big vehicles(bus). Parks it 4 times, because thats what it takes....
         /// </summary>
         /// <param name="position"></param>
         /// <param name="bus"></param>
-        private void ParkBus(int position, Vehicle bus)
+        public void ParkBigVehicle(Vehicle vehicle)
         {
-            //4 is the required parkingspots in sequence to park a bus
-            int lastSpotAhead = position + 4;
-            //used to set the availablespace on parkingspots to zero
-            int resetAvailableSpace = 0;
+            int resetAvailablespace = 0;
+            var set = FindBigVehicleSpots(vehicle);
 
-            for (int i = position; i < lastSpotAhead; i++)
+            if (set != null)
             {
-                ParkingList[i].AddVehicle(bus);
-                ParkingList[i].AvailableSpace = resetAvailableSpace;
-            }
-        }
-        private void RemoveBus(int position, Vehicle bus)
-        {
-            int spotsAhead = position + 3;
-
-            for (int i = position; i < spotsAhead; i++)
-            {
-                ParkingList[i].RemoveVehicle(bus);
-                ParkingList[i].AvailableSpace = Configuration.ParkingSpotSize;
-            }
-        }
-        public void AddBus(string regnum)
-        {
-            Bus bus = new Bus(regnum);
-            int busSpot = FirstAvailableBusSpot();
-
-            if (busSpot != -1)
-            {
-                ParkBus(busSpot, bus);
+                foreach (var item in set)
+                {
+                    item.AddVehicle(vehicle);
+                    item.AvailableSpace = resetAvailablespace;
+                }
                 ManageFileData.UpdateParkingList(ParkingList);
                 UserDialogue.SuccessMessage("parked");
-                Console.WriteLine("Your vehicle has been parked at parkingwindows {0} -> {1}", busSpot + 1, busSpot + 4);
                 Console.ReadKey();
-                return;
             }
-            Console.WriteLine("No room to park a bus!");
+            else
+                UserDialogue.ParkinglotFull();
+
+            Console.ReadKey();
         }
+
         /// <summary>
         /// handles parking of all "small vehicles"
         /// </summary>
         /// <param name="vehicle"></param>
         public void ParkSmallVehicle(Vehicle vehicle)
         {
-            ParkingSpot spot = FirstAvailableSlot(vehicle);
-            
-            if(spot != null)
+            ParkingSpot spot = FindSmallVehicleSpot(vehicle);
+            if (spot != null)
             {
                 spot.AddVehicle(vehicle);
                 ManageFileData.UpdateParkingList(ParkingList);
@@ -126,64 +113,161 @@ namespace Prague_Parking_2._1
                 UserDialogue.ParkinglotFull();
 
             Console.ReadKey();
+        }
 
+        /// <summary>
+        /// searches for vehicles with a certain regnumber
+        /// </summary>
+        /// <param name="regNum"></param>
+        /// <returns>Dictionary of KEY parkingspots and VALUE vehicles</returns>
+        private Dictionary<ParkingSpot, Vehicle> GetSpecificVehicle(string regNum)
+        {
+            var dictionary = new Dictionary<ParkingSpot, Vehicle>();
+
+            foreach (var spot in ParkingList)
+            {
+                foreach (var vehicle in spot.VehiclesParked)
+                {
+                    if (vehicle.RegNumber.Equals(regNum))
+                    {
+                        dictionary.Add(spot, vehicle);
+                    }
+                }
+            }
+            return dictionary;
         }
         /// <summary>
         /// remove a vehicle
         /// </summary>
-        public void CheckOutVehicle() //temporär
+        public void RemoveVehicle()
         {
             UserDialogue.DisplayOption("CHECKOUT VEHICLE");
             string regnum = UserDialogue.AskForRegNum();
-            (Vehicle veh, ParkingSpot spot) = GetVehicleStatus(regnum);
+            Dictionary<ParkingSpot, Vehicle> set = GetSpecificVehicle(regnum);
 
-            if (veh != null && veh.VehicleType != "BUS")
+            if (set.Count > 0)
             {
-                spot.RemoveVehicle(veh);
+                foreach (var item in set)
+                {
+                    if (item.Value.VehicleType.Equals("BUS"))
+                    {
+                        item.Key.RemoveVehicle(item.Value);
+                        item.Key.AvailableSpace = Configuration.ParkingSpotSize;
+                    }
+                    else
+                    {
+                        item.Key.RemoveVehicle(item.Value);
+                    }
+
+                }
+                ManageFileData.UpdateParkingList(ParkingList);
+                UserDialogue.SuccessMessage("checked out");
+                Console.ReadKey();
+                return;
             }
-            else if (veh.VehicleType == "BUS")
-            {
-                int index = spot.ParkingWindow - 1;
-                RemoveBus(index, veh);
-            }
-            ManageFileData.UpdateParkingList(ParkingList);
-            UserDialogue.SuccessMessage("checked out");
+            Console.WriteLine("Vehicle not found!");
             Console.ReadKey();
         }
         /// <summary>
         /// move vehicle to antoher spot
         /// </summary>
-        public void MoveVehicle() //jobbar på det D: borde nog skaffa en extra metod för att kolla ifall fordonet får plats i ÖNSKAD ruta
+        public void MoveVehicle() //jobbar på det D: 
         {
             UserDialogue.DisplayOption("MOVE VEHICLE");
             string regnum = UserDialogue.AskForRegNum();
-
-            (Vehicle veh, ParkingSpot spot) = GetVehicleStatus(regnum);
+            Dictionary<ParkingSpot, Vehicle> set = GetSpecificVehicle(regnum);
 
             Console.WriteLine("Type in your desired spot to move too [1- 100]");
             int parkingSpot;
-            bool validation = int.TryParse(Console.ReadLine(), out parkingSpot) && veh != null;
+            bool validation = int.TryParse(Console.ReadLine(), out parkingSpot) && set.Count > 0;
             if (validation)
             {
-                if (ParkingList[parkingSpot - 1].AvailableSpace >= veh.Size)
+                parkingSpot -= 1; // to get the right index
+                foreach (var item in set)
                 {
-                    ParkingList[parkingSpot - 1].AddVehicle(veh); //lägger till på nya platsen
-                    spot.RemoveVehicle(veh); // tar bort det från "gamla" platsen
-                    ManageFileData.UpdateParkingList(ParkingList);
-                    UserDialogue.SuccessMessage("moved");
-                    Console.ReadKey();
-                    return;
+                    if (item.Value.Size == Configuration.BusSize)
+                    {
+                        if (DoesBigVehicleFit(item.Value, parkingSpot))
+                        {
+                            ParkingList[parkingSpot].AddVehicle(item.Value);
+                            ParkingList[parkingSpot++].AvailableSpace = 0;
+                            item.Key.RemoveVehicle(item.Value);
+                            item.Key.AvailableSpace = Configuration.ParkingSpotSize;
+                        }
+                        else
+                        {
+                            UserDialogue.ErrorMessage();
+                            Console.ReadKey();
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        if (DoesSmallVehicleFit(item.Value, parkingSpot))
+                        {
+                            ParkingList[parkingSpot].AddVehicle(item.Value); //lägger till på nya platsen
+                            item.Key.RemoveVehicle(item.Value); // tar bort det från "gamla" platsen
+                            ManageFileData.UpdateParkingList(ParkingList);
+                            UserDialogue.SuccessMessage("moved");
+                            Console.ReadKey();
+                            return;
+                        }
+                        else
+                        {
+                            UserDialogue.ErrorMessage();
+                            Console.ReadKey();
+                            return;
+                        }
+                        
+                    }
                 }
             }
-            UserDialogue.ErrorMessage();
+            UserDialogue.SuccessMessage("moved");
+            ManageFileData.UpdateParkingList(ParkingList);
+            Console.ReadKey();
         }
-        private bool VehicleFits(Vehicle vehicle, int place)
+        /// <summary>
+        /// checks if smaller vehicle fits in a given parkingspot from the user
+        /// </summary>
+        /// <param name="vehicle"></param>
+        /// <param name="place"></param>
+        /// <returns></returns>
+        private bool DoesSmallVehicleFit(Vehicle vehicle, int place)
         {
-            if (vehicle.Size <= ParkingList[place - 1].AvailableSpace)
+            if (vehicle.Size <= ParkingList[place].AvailableSpace)
             {
                 return true;
             }
             return false;
+        }
+        private bool DoesBigVehicleFit(Vehicle veh, int place) 
+        {
+            //int amountOfSpots = veh.Size / Configuration.ParkingSpotSize;
+            //int count = 0;
+            
+            bool vehicleFits = 
+            ParkingList[place].AvailableSpace == Configuration.ParkingSpotSize &&
+            ParkingList[place + 1].AvailableSpace == Configuration.ParkingSpotSize && //jokes, ska fixa
+            ParkingList[place + 2].AvailableSpace == Configuration.ParkingSpotSize &&
+            ParkingList[place + 3].AvailableSpace == Configuration.ParkingSpotSize;
+            return vehicleFits;
+            //for (int i = place; i < place + amountOfSpots; i++)
+            //{
+            //    if (ParkingList[i].AvailableSpace == Configuration.ParkingSpotSize &&
+            //        ParkingList[i + 1].AvailableSpace == Configuration.ParkingSpotSize) //något fel med denna, det går att flytta bussar till plats där det redan står fordon
+            //    {
+            //        count++;
+            //    }
+            //    else
+            //    {
+            //        count = 0;
+            //    }
+            //    if (count == amountOfSpots - 1)
+            //    {
+            //        return true;
+            //    }
+            //}
+            //return false;
         }
 
         /// <summary>
@@ -191,7 +275,7 @@ namespace Prague_Parking_2._1
         /// </summary>
         /// <param name="regNum"></param>
         /// <returns></returns>
-        private (Vehicle, ParkingSpot) GetVehicleStatus(string regNum)
+        private (Vehicle, ParkingSpot) GetVehicleStatus(string regNum) //använder ej
         {
             var look =
                 from p in ParkingList
@@ -208,6 +292,7 @@ namespace Prague_Parking_2._1
             }
             return (null, null);
         }
+
         public void SearchForVehicle()
         {
             UserDialogue.DisplayOption("SEARCH VEHICLE");
@@ -257,6 +342,20 @@ namespace Prague_Parking_2._1
 
             return false;
         }
+        public bool CheckReg(string regnum)
+        {
+            foreach (var spots in ParkingList)
+            {
+                foreach (var v in spots.VehiclesParked)
+                {
+                    if (v.RegNumber == regnum)
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
         private List<Vehicle> GetParkedVehicles()
         {
             var list = new List<Vehicle>();
@@ -293,7 +392,7 @@ namespace Prague_Parking_2._1
                 {
                     parkingSpotColorMarking = "green";
                 }
-                else if (ParkingList[i].AvailableSpace == 2)
+                else if (ParkingList[i].AvailableSpace > 0 || ParkingList[i].AvailableSpace < Configuration.ParkingSpotSize)
                 {
                     parkingSpotColorMarking = "yellow";
                 }
@@ -333,15 +432,7 @@ namespace Prague_Parking_2._1
         {
             for (int i = 0; i < Configuration.ParkingHouseSize; i++) //läs in settings från en fil som säger att storleken på parkeringshuset ska vara 100
             {
-                //if (i >= (Configurations.ParkingHouseSize) / 2) //idé för att underlätta att lägga till bussar
-                //{
-                //    ParkingList.Add(new ParkingSpot { ParkingWindow = i + 1, ParkingSpotSize = 16, AvailableSpace = 16, });
-                //}
-                //else
-                //{
-                ParkingList.Add(new ParkingSpot { ParkingWindow = i + 1/*, AvailableSpace = 4*/ });
-                //}
-
+                ParkingList.Add(new ParkingSpot { ParkingWindow = i + 1 });
             }
         }
         private void ExpandParkingLot() //om man i configfilen ökar antalet p-platser

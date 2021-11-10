@@ -26,7 +26,7 @@ namespace Prague_Parking_2._1
             return true;
         }
 
-        public void RemoveVehicle(Vehicle vehicle)//ta bort ett fordon(endast detta kan nog bli lite skevt ifall man ska lägga till/ta bort en buss(16units)..)
+        public void RemoveVehicle(Vehicle vehicle)//ta bort ett fordon
         {
             VehiclesParked.Remove(vehicle);
             AvailableSpace += vehicle.Size;

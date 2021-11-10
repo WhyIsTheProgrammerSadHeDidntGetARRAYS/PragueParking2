@@ -51,7 +51,7 @@ namespace Prague_Parking_2._1
                     break;
 
                 case "Remove":
-                    parkinglot.CheckOutVehicle();
+                    parkinglot.RemoveVehicle();
                     break;
 
                 case "Exit Program":
@@ -64,7 +64,7 @@ namespace Prague_Parking_2._1
             UserDialogue.DisplayOption("PARK VEHICLE");
             string regnum = UserDialogue.AskForRegNum();
             ParkingLot pLot = new ParkingLot();
-            if (ParkingLot.IsValidRegNum(regnum))
+            if (ParkingLot.IsValidRegNum(regnum) && pLot.CheckReg(regnum))
             {
                 var choice = AnsiConsole.Prompt(
                 new SelectionPrompt<string>()
@@ -75,25 +75,23 @@ namespace Prague_Parking_2._1
                 switch (choice)
                 {
                     case "Car":
-                        //pLot.AddCar(regnum);
                         Car car = new Car(regnum);
                         pLot.ParkSmallVehicle(car);
                         break;
 
                     case "Motorcycle":
-                        //pLot.AddMC(regnum);
                         MC mc = new MC(regnum);
                         pLot.ParkSmallVehicle(mc);
                         break;
 
                     case "Bike":
-                        //pLot.AddBike(regnum);
                         Bike bike = new Bike(regnum);
                         pLot.ParkSmallVehicle(bike);
                         break;
 
                     case "Bus":
-                        pLot.AddBus(regnum);
+                        Bus bus = new Bus(regnum);
+                        pLot.ParkBigVehicle(bus);
                         break;
                 }
             }

@@ -22,7 +22,7 @@ namespace Prague_Parking_2._1
         public static void ErrorMessage()
         {
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("Something went wrong. Please take a look at your input.");
+            Console.WriteLine("Something went wrong. Please try again.");
             Console.ResetColor();
         }
         public static void ParkinglotFull()

@@ -5,9 +5,9 @@
     "AvailableSpace": 0,
     "VehiclesParked": [
       {
-        "RegNumber": "BILTEST123",
+        "RegNumber": "BIL123",
         "VehicleType": "CAR",
-        "CheckIn": "2021-11-08T15:46:21.1231371+01:00",
+        "CheckIn": "2021-11-10T20:05:39.2408996+01:00",
         "Size": 4
       }
     ]
@@ -18,42 +18,51 @@
     "AvailableSpace": 0,
     "VehiclesParked": [
       {
-        "RegNumber": "MCTEST123",
-        "VehicleType": "MOTORCYCLE",
-        "CheckIn": "2021-11-08T15:46:32.7067572+01:00",
-        "Size": 2
-      },
-      {
-        "RegNumber": "CYKELTEST123",
-        "VehicleType": "BIKE",
-        "CheckIn": "2021-11-08T15:46:41.035112+01:00",
-        "Size": 1
-      },
-      {
-        "RegNumber": "CYKELIGEN3211",
-        "VehicleType": "BIKE",
-        "CheckIn": "2021-11-08T15:46:47.8764864+01:00",
-        "Size": 1
+        "RegNumber": "BUSS123",
+        "VehicleType": "BUS",
+        "CheckIn": "2021-11-10T20:42:02.7883253+01:00",
+        "Size": 16
       }
     ]
   },
   {
     "ParkingWindow": 3,
     "ParkingSpotSize": 4,
-    "AvailableSpace": 4,
-    "VehiclesParked": []
+    "AvailableSpace": 0,
+    "VehiclesParked": [
+      {
+        "RegNumber": "BUSS123",
+        "VehicleType": "BUS",
+        "CheckIn": "2021-11-10T20:42:02.7883253+01:00",
+        "Size": 16
+      }
+    ]
   },
   {
     "ParkingWindow": 4,
     "ParkingSpotSize": 4,
-    "AvailableSpace": 4,
-    "VehiclesParked": []
+    "AvailableSpace": 0,
+    "VehiclesParked": [
+      {
+        "RegNumber": "BUSS123",
+        "VehicleType": "BUS",
+        "CheckIn": "2021-11-10T20:42:02.7883253+01:00",
+        "Size": 16
+      }
+    ]
   },
   {
     "ParkingWindow": 5,
     "ParkingSpotSize": 4,
-    "AvailableSpace": 4,
-    "VehiclesParked": []
+    "AvailableSpace": 0,
+    "VehiclesParked": [
+      {
+        "RegNumber": "BUSS123",
+        "VehicleType": "BUS",
+        "CheckIn": "2021-11-10T20:42:02.7883253+01:00",
+        "Size": 16
+      }
+    ]
   },
   {
     "ParkingWindow": 6,
