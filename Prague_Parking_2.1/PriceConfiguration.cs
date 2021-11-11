@@ -10,11 +10,11 @@ namespace Prague_Parking_2._1
 {
     public class PriceConfiguration
     {
-        public static int CarPrice { get; set; }
-        public static int McPrice { get; set; }
-        public static int BikePrice { get; set; }
-        public static int BusPrice { get; set; }
-        public static int FreeMinutes { get; set; }
+        public int CarPrice { get; set; }
+        public int McPrice { get; set; }
+        public int BikePrice { get; set; }
+        public int BusPrice { get; set; }
+        public int FreeMinutes { get; set; }
 
         private const string PriceFilePath = @"../../../Datafiles/PriceList.txt";
         private const string PricingPath = @"../../../Datafiles/Prices.json";
