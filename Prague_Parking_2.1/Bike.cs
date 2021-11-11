@@ -8,10 +8,12 @@ namespace Prague_Parking_2._1
 {
     public class Bike : Vehicle
     {
+        
         public Bike(string regNumber): base(regNumber)
         {
             VehicleType = "BIKE";
-            Size = Configuration.BikeSize;
+            ParkingConfiguration config = ParkingConfiguration.ReadParkingConfig();
+            Size = config.BikeSize;
             CheckIn = DateTime.Now;
         }
     }

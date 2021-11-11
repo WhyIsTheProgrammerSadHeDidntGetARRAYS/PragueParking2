@@ -11,8 +11,8 @@ namespace Prague_Parking_2._1
         public MC(string regNumber) : base(regNumber)
         {
             VehicleType = "MOTORCYCLE";
-            //RegNr = regNumber;
-            Size = Configuration.McSize;
+            ParkingConfiguration config = ParkingConfiguration.ReadParkingConfig();
+            Size = config.McSize;
             CheckIn = DateTime.Now;
 
         }

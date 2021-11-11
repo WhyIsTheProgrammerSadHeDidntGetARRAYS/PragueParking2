@@ -8,10 +8,12 @@ namespace Prague_Parking_2._1
 {
     public class Bus : Vehicle
     {
+        
         public Bus(string regNumber): base(regNumber)
         {
             VehicleType = "BUS";
-            Size = Configuration.BusSize;
+            ParkingConfiguration config = ParkingConfiguration.ReadParkingConfig();
+            Size = config.BusSize;
             CheckIn = DateTime.Now;
         }
     }

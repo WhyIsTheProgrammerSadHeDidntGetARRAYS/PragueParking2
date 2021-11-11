@@ -1,12 +1,8 @@
 {
-  "Configurations": {
-
     "ParkingspotSize": 4,
     "ParkingSpots": 100,
     "CarSize": 4,
     "McSize": 2,
     "BikeSize": 1,
     "BusSize": 16
-  }
-
 }

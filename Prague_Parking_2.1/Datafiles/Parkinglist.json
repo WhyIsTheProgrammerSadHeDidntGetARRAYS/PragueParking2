@@ -5,10 +5,10 @@
     "AvailableSpace": 0,
     "VehiclesParked": [
       {
-        "RegNumber": "BIL123",
-        "VehicleType": "CAR",
-        "CheckIn": "2021-11-10T20:05:39.2408996+01:00",
-        "Size": 4
+        "RegNumber": "ABC123",
+        "VehicleType": "BUS",
+        "CheckIn": "2021-11-11T15:16:03.0408154+01:00",
+        "Size": 16
       }
     ]
   },
@@ -18,9 +18,9 @@
     "AvailableSpace": 0,
     "VehiclesParked": [
       {
-        "RegNumber": "BUSS123",
+        "RegNumber": "ABC123",
         "VehicleType": "BUS",
-        "CheckIn": "2021-11-10T20:42:02.7883253+01:00",
+        "CheckIn": "2021-11-11T15:16:03.0408154+01:00",
         "Size": 16
       }
     ]
@@ -31,9 +31,9 @@
     "AvailableSpace": 0,
     "VehiclesParked": [
       {
-        "RegNumber": "BUSS123",
+        "RegNumber": "ABC123",
         "VehicleType": "BUS",
-        "CheckIn": "2021-11-10T20:42:02.7883253+01:00",
+        "CheckIn": "2021-11-11T15:16:03.0408154+01:00",
         "Size": 16
       }
     ]
@@ -44,9 +44,9 @@
     "AvailableSpace": 0,
     "VehiclesParked": [
       {
-        "RegNumber": "BUSS123",
+        "RegNumber": "ABC123",
         "VehicleType": "BUS",
-        "CheckIn": "2021-11-10T20:42:02.7883253+01:00",
+        "CheckIn": "2021-11-11T15:16:03.0408154+01:00",
         "Size": 16
       }
     ]
@@ -54,13 +54,13 @@
   {
     "ParkingWindow": 5,
     "ParkingSpotSize": 4,
-    "AvailableSpace": 0,
+    "AvailableSpace": 3,
     "VehiclesParked": [
       {
-        "RegNumber": "BUSS123",
-        "VehicleType": "BUS",
-        "CheckIn": "2021-11-10T20:42:02.7883253+01:00",
-        "Size": 16
+        "RegNumber": "ABC321",
+        "VehicleType": "BIKE",
+        "CheckIn": "2021-11-11T15:32:03.7127396+01:00",
+        "Size": 1
       }
     ]
   },

@@ -10,18 +10,19 @@ namespace Prague_Parking_2._1
 {
     public class ParkingLot
     {
+        ParkingConfiguration config = ParkingConfiguration.ReadParkingConfig();
         List<ParkingSpot> ParkingList { get; set; } = ManageFileData.ReadParkinglist(); //we TRY to set the list equal to objects of parkingspots from parkingfile
 
         public ParkingLot()
         {
-            if (ParkingList == null)//if list is empty, we create a new list empty list, and "draw" a new parkinglot
+            if(ParkingList == null)
             {
                 ParkingList = new List<ParkingSpot>(capacity: 100);
                 AddNewParkinglot();
             }
-            else if (ParkingList.Count < Configuration.ParkingHouseSize)
+            if(ParkingList.Count < config.ParkingSpots)
             {
-                ExpandParkingLot(); //jag kanske kan göra detta till ett menyval för skojs skull(att göra pshuet större/mindre)
+                ExpandParkingLot();
             }
             ManageFileData.UpdateParkingList(ParkingList);
         }
@@ -44,11 +45,11 @@ namespace Prague_Parking_2._1
         {
             var set = new HashSet<ParkingSpot>();
             int counter = 0;
-            int spotsInARow = vehicle.Size / Configuration.ParkingSpotSize;
-
+            int spotsInARow = vehicle.Size / config.ParkingSpotSize;
+            
             foreach (var spot in ParkingList)
             {
-                if (spot.AvailableSpace == Configuration.ParkingSpotSize)
+                if (spot.AvailableSpace == config.ParkingSpotSize)
                 {
                     counter++;
                     set.Add(spot);
@@ -89,8 +90,7 @@ namespace Prague_Parking_2._1
             }
             else
                 UserDialogue.ParkinglotFull();
-
-            Console.ReadKey();
+                Console.ReadKey();
         }
 
         /// <summary>
@@ -107,12 +107,10 @@ namespace Prague_Parking_2._1
                 UserDialogue.SuccessMessage("parked");
                 Console.WriteLine("Your vehicle is standing at parkingwindow {0}", spot.ParkingWindow);
                 Console.ReadKey();
-                return;
             }
             else
                 UserDialogue.ParkinglotFull();
-
-            Console.ReadKey();
+                Console.ReadKey();
         }
 
         /// <summary>
@@ -152,7 +150,7 @@ namespace Prague_Parking_2._1
                     if (item.Value.VehicleType.Equals("BUS"))
                     {
                         item.Key.RemoveVehicle(item.Value);
-                        item.Key.AvailableSpace = Configuration.ParkingSpotSize;
+                        item.Key.AvailableSpace = config.ParkingSpotSize;
                     }
                     else
                     {
@@ -185,14 +183,14 @@ namespace Prague_Parking_2._1
                 parkingSpot -= 1; // to get the right index
                 foreach (var item in set)
                 {
-                    if (item.Value.Size == Configuration.BusSize)
+                    if (item.Value.Size == config.BusSize)
                     {
                         if (DoesBigVehicleFit(item.Value, parkingSpot))
                         {
                             ParkingList[parkingSpot].AddVehicle(item.Value);
                             ParkingList[parkingSpot++].AvailableSpace = 0;
                             item.Key.RemoveVehicle(item.Value);
-                            item.Key.AvailableSpace = Configuration.ParkingSpotSize;
+                            item.Key.AvailableSpace = config.ParkingSpotSize;
                         }
                         else
                         {
@@ -240,16 +238,20 @@ namespace Prague_Parking_2._1
             }
             return false;
         }
+        private void Remove(string regnum)
+        {
+            ParkingList.ForEach(x => x.VehiclesParked.RemoveAll(x => x.RegNumber == regnum));
+        }
         private bool DoesBigVehicleFit(Vehicle veh, int place) 
         {
             //int amountOfSpots = veh.Size / Configuration.ParkingSpotSize;
             //int count = 0;
             
             bool vehicleFits = 
-            ParkingList[place].AvailableSpace == Configuration.ParkingSpotSize &&
-            ParkingList[place + 1].AvailableSpace == Configuration.ParkingSpotSize && //jokes, ska fixa
-            ParkingList[place + 2].AvailableSpace == Configuration.ParkingSpotSize &&
-            ParkingList[place + 3].AvailableSpace == Configuration.ParkingSpotSize;
+            ParkingList[place].AvailableSpace == config.ParkingSpotSize &&
+            ParkingList[place + 1].AvailableSpace == config.ParkingSpotSize && //jokes, ska fixa
+            ParkingList[place + 2].AvailableSpace == config.ParkingSpotSize &&
+            ParkingList[place + 3].AvailableSpace == config.ParkingSpotSize;
             return vehicleFits;
             //for (int i = place; i < place + amountOfSpots; i++)
             //{
@@ -386,13 +388,13 @@ namespace Prague_Parking_2._1
             var parkingSpotColorMarking = "";
             var printResult = "";
 
-            for (int i = 0; i < Configuration.ParkingHouseSize; i++) //fixa detta så att det läser parkinghousesize från en fil
+            for (int i = 0; i < config.ParkingSpots; i++) //fixa detta så att det läser parkinghousesize från en fil
             {
-                if (ParkingList[i].AvailableSpace == Configuration.ParkingSpotSize)
+                if (ParkingList[i].AvailableSpace == config.ParkingSpotSize)
                 {
                     parkingSpotColorMarking = "green";
                 }
-                else if (ParkingList[i].AvailableSpace > 0 || ParkingList[i].AvailableSpace < Configuration.ParkingSpotSize)
+                else if (ParkingList[i].AvailableSpace > 0 || ParkingList[i].AvailableSpace < config.ParkingSpotSize)
                 {
                     parkingSpotColorMarking = "yellow";
                 }
@@ -413,7 +415,7 @@ namespace Prague_Parking_2._1
         public void PrintPrice()
         {
             Console.CursorVisible = false;
-            List<string> prices = Configuration.GetPriceList();
+            List<string> prices = PriceConfiguration.GetPriceList();
             var table = new Table();
             table.Expand();
             table.AddColumn(new TableColumn(new Markup("[green]Our prices[/]")).Alignment(Justify.Center));
@@ -430,14 +432,14 @@ namespace Prague_Parking_2._1
         }
         private void AddNewParkinglot() //om det inte finns något i filen
         {
-            for (int i = 0; i < Configuration.ParkingHouseSize; i++) //läs in settings från en fil som säger att storleken på parkeringshuset ska vara 100
+            for (int i = 0; i < config.ParkingSpots; i++) //läs in settings från en fil som säger att storleken på parkeringshuset ska vara 100
             {
                 ParkingList.Add(new ParkingSpot { ParkingWindow = i + 1 });
             }
         }
         private void ExpandParkingLot() //om man i configfilen ökar antalet p-platser
         {
-            for (int i = ParkingList.Count; i < Configuration.ParkingHouseSize; i++)
+            for (int i = ParkingList.Count; i < config.ParkingSpots; i++)
             {
                 ParkingList.Add(new ParkingSpot { ParkingWindow = i + 1 });
             }
