@@ -14,8 +14,8 @@ namespace Prague_Parking_2._0
         static void Main(string[] args)
         {
             Console.Title = "Prague Parking 2";
-            Configurations.SetConfigValues();//TODO: handle exceptions when reading from files
-            Configurations.SetPrices();
+            Configurations.ReadConfigFile();//TODO: handle exceptions when reading from files
+            ParkingLot lot = new ParkingLot();
 
             Menu menu = new Menu();
             while (true)

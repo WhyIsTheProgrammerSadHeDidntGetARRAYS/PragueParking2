@@ -1,3 +1,5 @@
-﻿Price for car is 20 czk per hour
+﻿Price for bike is 5 czk per hour
 Price for motorcycle is 10 czk per hour
-free parkingtime = 10 minutes
+Price for car is 20 czk per hour
+Price for bus is 80 czk per hour
+First 10 minutes are free!

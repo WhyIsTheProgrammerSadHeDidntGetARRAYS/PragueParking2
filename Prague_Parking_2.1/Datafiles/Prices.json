@@ -1,10 +1,7 @@
 {
-  "Prices": {
-    
-    "CarPricePerHour": 20,
-    "MCPricePerHour": 10,
-    "BikePricePerHour": 5,
-    "BusPricePerHour": 80,
-    "FreeParkingTimeInMinutes": 10
-  }
+  "CarPricePerHour": 20,
+  "MCPricePerHour": 10,
+  "BikePricePerHour": 5,
+  "BusPricePerHour": 80,
+  "FreeParkingTimeInMinutes": 10
 }

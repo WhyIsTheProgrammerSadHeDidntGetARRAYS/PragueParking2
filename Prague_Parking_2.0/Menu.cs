@@ -75,11 +75,13 @@ namespace Prague_Parking_2._0
                 switch (choice)
                 {
                     case "Car":
-                        pLot.AddCar(regnum);
+                        Car car = new Car(regnum);
+                        pLot.AddVehicle(car);
                         break;
                     
                     case "Motorcycle":
-                        pLot.AddMC(regnum);
+                        MC mc = new MC(regnum);
+                        pLot.AddVehicle(mc);
                         break;
                 }
             }

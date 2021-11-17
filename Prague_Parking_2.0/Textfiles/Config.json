@@ -1,8 +1,9 @@
 {
-  "Configurations": {
-
-    "ParkingspotSize": 4,
-    "ParkingSpots": 100
-  }
-  
+  "ParkingspotSize": 4,
+  "ParkingSpots": 100,
+  "CarSize": 4,
+  "McSize": 2,
+  "CarCost": 20,
+  "McCost": 10,
+  "FreeMinutes": 10
 }

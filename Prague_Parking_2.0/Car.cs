@@ -4,21 +4,13 @@ namespace Prague_Parking_2._0
 {
     public class Car : Vehicle
     {
-        //public Car() // för ett test..
-        //{
-        //    Size = 4;
-        //}
+        Configurations config = Configurations.ReadConfigFile();
+        
         public Car(string regNumber) : base(regNumber)
         {
             VehicleType = "CAR";
-            //RegNr = regNumber;
-            Size = 4;
+            Size = config.CarSize;
             CheckIn = DateTime.Now;
-        }
-
-        public override string ToString()
-        {
-            return "";
         }
     }
 }

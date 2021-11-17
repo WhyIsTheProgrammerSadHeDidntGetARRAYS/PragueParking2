@@ -15,8 +15,9 @@ namespace Prague_Parking_2._0
 
         public ParkingSpot()
         {
-            ParkingSpotSize = Configurations.ParkingSpotSize;
-            AvailableSpace = Configurations.ParkingSpotSize;
+            Configurations config = Configurations.ReadConfigFile();
+            ParkingSpotSize = config.ParkingSpotSize;
+            AvailableSpace = config.ParkingSpotSize;
         }
 
         public bool AddVehicle(Vehicle vehicle)//lägga till ett fordon

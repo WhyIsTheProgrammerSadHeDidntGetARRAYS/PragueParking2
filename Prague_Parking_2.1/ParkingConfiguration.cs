@@ -11,20 +11,36 @@ namespace Prague_Parking_2._1
 {
     public class ParkingConfiguration
     {
-        public int ParkingSpotSize { get; set; }
-        public int ParkingSpots { get; set; }
-        public int CarSize { get; set; }
-        public int McSize { get; set; }
-        public int BikeSize { get; set; }
-        public int BusSize { get; set; }
+        public int ParkingSpotSize { get; init; }
+        public int ParkingSpots { get; init; }
+        public int CarSize { get; init; }
+        public int McSize { get; init; }
+        public int BikeSize { get; init; }
+        public int BusSize { get; init; }
 
         private const string ConfigFilePath = @"../../../Datafiles/config.json";
 
-        public static ParkingConfiguration ReadParkingConfig()
+        public static ParkingConfiguration ReadParkingConfig() //konstruktorn kan ropa på denna, ta bort static
         {
+            if (!File.Exists(ConfigFilePath))
+            {
+                throw new FileNotFoundException("The file 'Datafiles/config.json' could not be found"); 
+            }
             string json = File.ReadAllText(ConfigFilePath);
             var data = JsonConvert.DeserializeObject<ParkingConfiguration>(json);
             return data;
+        }
+        public void WriteToParkingConfig(int parkingspots)
+        {
+            if (!File.Exists(ConfigFilePath))
+            {
+                throw new FileNotFoundException("The file 'Datafiles/config.json' could not be found");
+            }
+            string json = File.ReadAllText(ConfigFilePath);
+            dynamic jsonObj = JsonConvert.DeserializeObject(json);
+            jsonObj["ParkingSpots"] = parkingspots;
+            string jsonConvert = JsonConvert.SerializeObject(jsonObj, Formatting.Indented);
+            File.WriteAllText(ConfigFilePath, jsonConvert);
         }
     }
 }

@@ -5,10 +5,10 @@
     "AvailableSpace": 0,
     "VehiclesParked": [
       {
-        "RegNumber": "ABC123",
-        "VehicleType": "BUS",
-        "CheckIn": "2021-11-11T15:16:03.0408154+01:00",
-        "Size": 16
+        "VehicleIdentifier": "CAR",
+        "Size": 4,
+        "RegNumber": "ABC321",
+        "CheckIn": "2021-11-16T21:23:24.9781058+01:00"
       }
     ]
   },
@@ -18,23 +18,29 @@
     "AvailableSpace": 0,
     "VehiclesParked": [
       {
+        "VehicleIdentifier": "CAR",
+        "Size": 4,
         "RegNumber": "ABC123",
-        "VehicleType": "BUS",
-        "CheckIn": "2021-11-11T15:16:03.0408154+01:00",
-        "Size": 16
+        "CheckIn": "2021-11-17T21:30:55.7925014+01:00"
       }
     ]
   },
   {
     "ParkingWindow": 3,
     "ParkingSpotSize": 4,
-    "AvailableSpace": 0,
+    "AvailableSpace": 1,
     "VehiclesParked": [
       {
-        "RegNumber": "ABC123",
-        "VehicleType": "BUS",
-        "CheckIn": "2021-11-11T15:16:03.0408154+01:00",
-        "Size": 16
+        "VehicleIdentifier": "MOTORCYCLE",
+        "Size": 2,
+        "RegNumber": "ASD1123",
+        "CheckIn": "2021-11-17T11:52:51.4599109+01:00"
+      },
+      {
+        "VehicleIdentifier": "BIKE",
+        "Size": 1,
+        "RegNumber": "ASD321",
+        "CheckIn": "2021-11-17T11:53:15.0892828+01:00"
       }
     ]
   },
@@ -44,25 +50,18 @@
     "AvailableSpace": 0,
     "VehiclesParked": [
       {
-        "RegNumber": "ABC123",
-        "VehicleType": "BUS",
-        "CheckIn": "2021-11-11T15:16:03.0408154+01:00",
-        "Size": 16
+        "VehicleIdentifier": "CAR",
+        "Size": 4,
+        "RegNumber": "BIL123",
+        "CheckIn": "2021-11-17T11:52:21.1787048+01:00"
       }
     ]
   },
   {
     "ParkingWindow": 5,
     "ParkingSpotSize": 4,
-    "AvailableSpace": 3,
-    "VehiclesParked": [
-      {
-        "RegNumber": "ABC321",
-        "VehicleType": "BIKE",
-        "CheckIn": "2021-11-11T15:32:03.7127396+01:00",
-        "Size": 1
-      }
-    ]
+    "AvailableSpace": 4,
+    "VehiclesParked": []
   },
   {
     "ParkingWindow": 6,

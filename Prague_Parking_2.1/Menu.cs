@@ -15,9 +15,10 @@ namespace Prague_Parking_2._1
             var choice = AnsiConsole.Prompt(
                 new SelectionPrompt<string>()
                 .Title("[grey]Prague Parking 2.1[/]\n\nUse [green](Arrowkeys)[/] to browse through the menu. Hit [green](Enter)[/] to pick something.")
-                .PageSize(7)
+                .PageSize(10)
                 .AddChoices(new[] {
-                    "Park Vehicle", "Move vehicle", "Our prices", "Search for vehicle", "Print Vehicles", "Remove","Exit Program" }));
+                    "Park Vehicle", "Move vehicle", "Remove Vehicle", "Search for vehicle", 
+                    "Parkinglot Overview", "Print Parked Vehicles", "Our prices", "Clear ALL vehicles", "Edit settings", "Exit Program" }));
 
             return choice;
         }
@@ -30,15 +31,15 @@ namespace Prague_Parking_2._1
             switch (menuChoice)
             {
                 case "Park Vehicle":
-                    ParkVehicleType();
+                    SpecifyVehicletypeToPark();
                     break;
 
                 case "Move vehicle":
-                    parkinglot.MoveVehicle();
+                    parkinglot.Move();
                     break;
 
-                case "Our prices":
-                    parkinglot.PrintPrice();
+                case "Remove Vehicle":
+                    parkinglot.CheckOut();
                     break;
 
                 case "Search for vehicle":
@@ -46,12 +47,24 @@ namespace Prague_Parking_2._1
                     Console.ReadKey();
                     break;
 
-                case "Print Vehicles":
+                case "Parkinglot Overview":
                     parkinglot.ParkingLotOverview();
                     break;
 
-                case "Remove":
-                    parkinglot.RemoveVehicle();
+                case "Print Parked Vehicles":
+                    parkinglot.PrintParkedVehicles();
+                    break;
+
+                case "Our prices":
+                    parkinglot.PrintPrice();
+                    break;
+                case "Clear ALL vehicles":
+                    parkinglot.ClearAllVehicles();
+                    Console.ReadKey();
+                    break;
+
+                case "Edit settings":
+                    UserDialogue.ChangeSettingsOption();
                     break;
 
                 case "Exit Program":
@@ -59,39 +72,42 @@ namespace Prague_Parking_2._1
                     break;
             }
         }
-        public void ParkVehicleType()
+        public void SpecifyVehicletypeToPark()
         {
             UserDialogue.DisplayOption("PARK VEHICLE");
             string regnum = UserDialogue.AskForRegNum();
             ParkingLot pLot = new ParkingLot();
-            if (ParkingLot.IsValidRegNum(regnum) && pLot.CheckReg(regnum))
+            if (Vehicle.IsValidRegNum(regnum) && pLot.DoesRegnumExist(regnum))
             {
                 var choice = AnsiConsole.Prompt(
                 new SelectionPrompt<string>()
                 .Title("[grey]Choose what type of vehicle you want to park[/]")
                 .PageSize(10)
                 .AddChoices(new[] {
-                    "Car", "Motorcycle", "Bike", "Bus"}));
+                    "Car", "Motorcycle", "Bike", "Bus", "Back to menu"}));
                 switch (choice)
                 {
                     case "Car":
                         Car car = new Car(regnum);
-                        pLot.ParkSmallVehicle(car);
+                        pLot.ParkVehicle(car);
                         break;
 
                     case "Motorcycle":
                         MC mc = new MC(regnum);
-                        pLot.ParkSmallVehicle(mc);
+                        pLot.ParkVehicle(mc);
                         break;
 
                     case "Bike":
                         Bike bike = new Bike(regnum);
-                        pLot.ParkSmallVehicle(bike);
+                        pLot.ParkVehicle(bike);
                         break;
 
                     case "Bus":
                         Bus bus = new Bus(regnum);
-                        pLot.ParkBigVehicle(bus);
+                        pLot.ParkVehicle(bus);
+                        break;
+
+                    case "Back to menu":
                         break;
                 }
             }

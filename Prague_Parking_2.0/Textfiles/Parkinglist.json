@@ -5,10 +5,10 @@
     "AvailableSpace": 0,
     "VehiclesParked": [
       {
-        "RegNumber": "ABC3421",
         "VehicleType": "CAR",
-        "CheckIn": "2021-11-06T16:37:11.6618943+01:00",
-        "Size": 4
+        "Size": 4,
+        "RegNumber": "HEJYO123",
+        "CheckIn": "2021-11-16T21:00:21.5687295+01:00"
       }
     ]
   },

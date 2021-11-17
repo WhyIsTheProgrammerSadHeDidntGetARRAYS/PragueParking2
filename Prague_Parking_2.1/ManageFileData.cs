@@ -18,9 +18,17 @@ namespace Prague_Parking_2._1
         /// <returns></returns>
         public static List<ParkingSpot> ReadParkinglist()//returns file as a non-json list of objects //TODO: handle exceptions
         {
-            string temp = File.ReadAllText(ParkingListPath);
-            var tempList = JsonConvert.DeserializeObject<List<ParkingSpot>>(temp);
-            return tempList;
+            try
+            {
+                string temp = File.ReadAllText(ParkingListPath);
+                var tempList = JsonConvert.DeserializeObject<List<ParkingSpot>>(temp);
+                return tempList;
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            return null;
         }
         /// <summary>
         /// Updates the parkinglist, by writing the changes to the file

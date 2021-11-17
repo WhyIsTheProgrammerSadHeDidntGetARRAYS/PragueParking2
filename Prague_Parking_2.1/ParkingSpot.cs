@@ -9,7 +9,7 @@ namespace Prague_Parking_2._1
     public class ParkingSpot
     {
         public int ParkingWindow { get; set; }
-        public int ParkingSpotSize { get; } //behöver ingen setter just nu, då space per ruta alltid är 4
+        public int ParkingSpotSize { get; } 
         public int AvailableSpace { get; set; }
         public List<Vehicle> VehiclesParked { get; set; } = new List<Vehicle>();
 
@@ -33,22 +33,6 @@ namespace Prague_Parking_2._1
             AvailableSpace += vehicle.Size;
             //return true;
         }
-
-        //public int TimeSpent(Vehicle vehicle) //
-        //{
-        //    TimeSpan timeParked = DateTime.Now - vehicle.CheckIn;
-            
-        //    int timeSpent = 0;
-
-        //    if(timeParked.Minutes <= Configuration.FreeMinutes)
-        //    {
-        //        return timeSpent;
-        //    }
-        //    else if(timeParked.TotalMinutes >= 60)
-        //    {
-        //        timeSpent = (int)timeParked.TotalHours;
-        //        return timeSpent;
-        //    }
-        //}
+        //lägg till metod för att hantera större fordon
     }
 }

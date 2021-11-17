@@ -11,6 +11,7 @@ namespace Prague_Parking_2._0
     public class ParkingLot
     {
         List<ParkingSpot> ParkingList { get; set; } = ManageFileData.ReadParkinglist(); //we TRY to set the list equal to objects of parkingspots from parkingfile
+        Configurations config = Configurations.ReadConfigFile();
 
         public ParkingLot()
         {
@@ -18,10 +19,6 @@ namespace Prague_Parking_2._0
             {
                 ParkingList = new List<ParkingSpot>(capacity: 100);
                 AddNewParkinglot();
-            }
-            else if (ParkingList.Count < Configurations.ParkingHouseSize)
-            {
-                ExpandParkingLot(); //jag kanske kan göra detta till ett menyval för skojs skull(att göra pshuet större/mindre)
             }
         }
         /// <summary>
@@ -34,51 +31,22 @@ namespace Prague_Parking_2._0
             ParkingSpot spot = ParkingList.Find(x => x.AvailableSpace >= vehicle.Size);
             return spot;
         }
-
-        /// <summary>
-        /// add a car by giving a registration number
-        /// </summary>
-        /// <param name="regnum"></param>
-        public void AddCar(string regnum)
+        public void AddVehicle(Vehicle vehicle)
         {
-            Console.Clear();
-            Car car = new Car(regnum);
-            ParkingSpot ps = FirstAvailableSlot(car);
-
-            if (ps != null)
+            ParkingSpot ps = FirstAvailableSlot(vehicle);
+            
+            if(ps != null)
             {
-                //car.RegNumber = "ändrar kod till små bokstäver"; //detta ska inte gå att ändra på.. lös det i vehicle sopa
-                ps.AddVehicle(car);
-                ManageFileData.UpdateParkingList(ParkingList);
-                Console.WriteLine("Your vehicle has been parked at parkingwindow {0}", ps.ParkingWindow);
-                UserDialogue.SuccessMessage("parked");
-
-            }
-            else
-                UserDialogue.ParkinglotFull();
-
-            Console.ReadKey();
-        }
-        public void AddMC(string regnum) //temporär metod för att testa lägga till MC
-        {
-            Console.Clear();
-            MC mc = new MC(regnum);
-            ParkingSpot ps = FirstAvailableSlot(mc);
-            if (ps != null)
-            {
-                ps.AddVehicle(mc);
+                ps.AddVehicle(vehicle);
                 ManageFileData.UpdateParkingList(ParkingList);
                 Console.WriteLine("Your vehicle has been parked at parkingwindow {0}", ps.ParkingWindow);
                 UserDialogue.SuccessMessage("parked");
                 Console.ReadKey();
-                return;
             }
             else
                 UserDialogue.ParkinglotFull();
-
-            Console.ReadKey();
+                Console.ReadKey();
         }
-
 
         /// <summary>
         /// remove a vehicle
@@ -100,7 +68,7 @@ namespace Prague_Parking_2._0
         /// <summary>
         /// move vehicle to antoher spot
         /// </summary>
-        public void MoveVehicle() //jobbar på det D: borde nog skaffa en extra metod för att kolla ifall fordonet får plats i ÖNSKAD ruta
+        public void MoveVehicle() 
         {
             UserDialogue.DisplayOption("MOVE VEHICLE");
             string regnum = UserDialogue.AskForRegNum();
@@ -121,16 +89,13 @@ namespace Prague_Parking_2._0
                     Console.ReadKey();
                     return;
                 }
+                else
+                {
+                    Console.WriteLine("That spot is currently occupied!");
+                    Console.ReadKey();
+                }
             }
             UserDialogue.ErrorMessage();
-        }
-        private bool VehicleFits(Vehicle vehicle, int place)
-        {
-            if (vehicle.Size <= ParkingList[place - 1].AvailableSpace)
-            {
-                return true;
-            }
-            return false;
         }
 
         /// <summary>
@@ -234,13 +199,13 @@ namespace Prague_Parking_2._0
             var parkingSpotColorMarking = "";
             var printResult = "";
 
-            for (int i = 0; i < Configurations.ParkingHouseSize; i++) //fixa detta så att det läser parkinghousesize från en fil
+            for (int i = 0; i < config.ParkingSpots; i++) //fixa detta så att det läser parkinghousesize från en fil
             {
-                if (ParkingList[i].AvailableSpace == Configurations.ParkingSpotSize)
+                if (ParkingList[i].AvailableSpace == config.ParkingSpotSize)
                 {
                     parkingSpotColorMarking = "green";
                 }
-                else if (ParkingList[i].AvailableSpace == 2)
+                else if (ParkingList[i].AvailableSpace == config.McSize)
                 {
                     parkingSpotColorMarking = "yellow";
                 }
@@ -278,24 +243,9 @@ namespace Prague_Parking_2._0
         }
         private void AddNewParkinglot() //om det inte finns något i filen
         {
-            for (int i = 0; i < Configurations.ParkingHouseSize; i++) //läs in settings från en fil som säger att storleken på parkeringshuset ska vara 100
+            for (int i = 0; i < config.ParkingSpots; i++) 
             {
-                //if (i >= (Configurations.ParkingHouseSize) / 2) //idé för att underlätta att lägga till bussar
-                //{
-                //    ParkingList.Add(new ParkingSpot { ParkingWindow = i + 1, ParkingSpotSize = 16, AvailableSpace = 16, });
-                //}
-                //else
-                //{
-                ParkingList.Add(new ParkingSpot { ParkingWindow = i + 1/*, AvailableSpace = 4*/ });
-                //}
-
-            }
-        }
-        private void ExpandParkingLot() //om man i configfilen ökar antalet p-platser
-        {
-            for (int i = ParkingList.Count; i < Configurations.ParkingHouseSize; i++)
-            {
-                ParkingList.Add(new ParkingSpot { ParkingWindow = i + 1 });
+                ParkingList.Add(new ParkingSpot { ParkingWindow = i + 1 });   
             }
         }
     }

@@ -8,13 +8,12 @@ namespace Prague_Parking_2._1
 {
     public class MC : Vehicle
     {
+        ParkingConfiguration config = ParkingConfiguration.ReadParkingConfig();
+        
         public MC(string regNumber) : base(regNumber)
         {
-            VehicleType = "MOTORCYCLE";
-            ParkingConfiguration config = ParkingConfiguration.ReadParkingConfig();
+            VehicleIdentifier = "MOTORCYCLE";
             Size = config.McSize;
-            CheckIn = DateTime.Now;
-
         }
     }
 }
