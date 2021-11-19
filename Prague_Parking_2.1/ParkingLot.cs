@@ -10,7 +10,7 @@ namespace Prague_Parking_2._1
 {
     public class ParkingLot
     {
-        ParkingConfiguration config = ParkingConfiguration.ReadParkingConfig();
+        ParkingConfiguration config = ParkingConfiguration.ReadParkingConfig(); //reads parkingconfig, sizes etc
         
         List<ParkingSpot> parkingList { get; set; } = ManageFileData.ReadParkinglist(); //we TRY to set the list equal to objects of parkingspots from parkingfile
 
@@ -74,7 +74,8 @@ namespace Prague_Parking_2._1
             return null;
         }
 
-        public void ParkVehicle(Vehicle vehicle) //gjorde mest denna för att slippa ha utskrifter i metoden som faktiskt lägger till fordonen
+        //this method is used for the users to park a vehicle, and determines wheter the vehicle is small or bigger. This method also holds print messages
+        public void ParkVehicle(Vehicle vehicle) //gjorde mest denna för att slippa ha utskrifter i metoderna som faktiskt hanterar parkering av fordon
         {
             if (vehicle.Size < config.BusSize)
             {
@@ -101,9 +102,8 @@ namespace Prague_Parking_2._1
         /// </summary>
         /// <param name="position"></param>
         /// <param name="bus"></param>
-        private bool ParkBigVehicle(Vehicle vehicle, int spotNumber = 0)
+        private bool ParkBigVehicle(Vehicle vehicle)
         {
-            int resetAvailablespace = 0;
             var set = FindBigVehicleSpots(vehicle);
 
             if (set != null)
@@ -111,7 +111,6 @@ namespace Prague_Parking_2._1
                 foreach (var item in set)
                 {
                     item.AddVehicle(vehicle);
-                    item.AvailableSpace = resetAvailablespace;
                 }
                 ManageFileData.UpdateParkingList(parkingList);
                 return true;
@@ -124,7 +123,7 @@ namespace Prague_Parking_2._1
         /// handles parking of all "small vehicles"
         /// </summary>
         /// <param name="vehicle"></param>
-        private bool ParkSmallVehicle(Vehicle vehicle, out ParkingSpot parkingSpot, int spotNumber = 0) //frivillig parameter för att parkera på "given" plats
+        private bool ParkSmallVehicle(Vehicle vehicle, out ParkingSpot parkingSpot) 
         {
             ParkingSpot spot = FindSmallVehicleSpot(vehicle);
             if (spot != null)
@@ -163,7 +162,7 @@ namespace Prague_Parking_2._1
         /// <summary>
         /// remove a vehicle
         /// </summary>
-        public void CheckOut()
+        public void RemoveVehicleFromParkingLot()
         {
             UserDialogue.DisplayOption("CHECKOUT VEHICLE");
             string regnum = UserDialogue.AskForRegNum();
@@ -173,17 +172,8 @@ namespace Prague_Parking_2._1
             {
                 foreach (var item in set)
                 {
-                    price = CalculatePrice(item.Value);
-                    if (item.Value.VehicleIdentifier.Equals("BUS"))//kollar ifall fordonet är buss, för att manuellt ställa om availablespace
-                    {
-                        item.Key.RemoveVehicle(item.Value);
-                        item.Key.AvailableSpace = config.ParkingSpotSize;
-                        
-                    }
-                    else //tar bort enstaka fordon
-                    {
-                        item.Key.RemoveVehicle(item.Value);
-                    }
+                    price = CalculateParkedTime(item.Value);
+                    item.Key.RemoveVehicle(item.Value);
                 }
                 Console.WriteLine("Total price to pay: {0} CZK", price);
                 ManageFileData.UpdateParkingList(parkingList);
@@ -204,12 +194,12 @@ namespace Prague_Parking_2._1
             Console.WriteLine("Type in your desired spot to move too [1- 100]");
             bool validation = int.TryParse(Console.ReadLine(), out int parkingSpot) && set.Count > 0;
             
-            if (!ValidateUserIndexInput(parkingSpot))
+            if (!ValidateUserIndexInput(parkingSpot)) // denna metod kollar så att index inte blir lägre än minimum d.v.s under 0, samt inte högre än listans sista index
             {
                 return;
             }
 
-            if (validation)
+            if (validation) //här börjar flytten om validation är true
             {
                 parkingSpot -= 1; //to get the right index
                 foreach (var item in set)
@@ -218,10 +208,8 @@ namespace Prague_Parking_2._1
                     {
                         if(DoesBusFit(item.Value, parkingSpot))
                         {
-                            parkingList[parkingSpot].AddVehicle(item.Value);
-                            parkingList[parkingSpot++].AvailableSpace = 0;
+                            parkingList[parkingSpot++].AddVehicle(item.Value);
                             item.Key.RemoveVehicle(item.Value);
-                            item.Key.AvailableSpace = config.ParkingSpotSize;
                         }
                     }
                     else if (DoesSmallVehicleFit(item.Value, parkingSpot))
@@ -261,6 +249,12 @@ namespace Prague_Parking_2._1
             return vehicle.Size <= parkingList[place].AvailableSpace;
         }
 
+        /// <summary>
+        /// checks is a bus fits in a given parkingspot from the user
+        /// </summary>
+        /// <param name="veh"></param>
+        /// <param name="place"></param>
+        /// <returns></returns>
         private bool DoesBusFit(Vehicle veh, int place)
         {
             int amountOfSpots = veh.Size / config.ParkingSpotSize;
@@ -280,6 +274,9 @@ namespace Prague_Parking_2._1
             return counter == amountOfSpots; //true ifall counter = amountofspots, false annars
         } 
         
+        /// <summary>
+        /// method that clears the parkinglot of all vehicles
+        /// </summary>
         public void ClearAllVehicles()
         {
             parkingList.ForEach(x => x.VehiclesParked.Clear()); //clears all vehicles
@@ -326,19 +323,19 @@ namespace Prague_Parking_2._1
 
         }
 
-        public double CalculatePrice(Vehicle vehicle) //lägg i vehicle
+        public int CalculateParkedTime(Vehicle vehicle) //lägg i vehicle
         {
             TimeSpan span = DateTime.Now - vehicle.CheckIn;
             PriceConfiguration price = PriceConfiguration.ReadPriceConfig();
-            double total = 0;
+            int total = 0;
 
             if (span.TotalMinutes <= price.FreeParkingTimeInMinutes)
             {
                 return total;
             }
-            //do calculations for totalminutes here, aka convert it to hours and take the total hours * vehicleprice per hour
-            double totalHours = (double)span.TotalHours; //priset kan inte bli mindre än timtaxan, gör om
-            total = 0;
+            
+            int totalHours = (int)Math.Ceiling(span.TotalHours); 
+            
             if (vehicle.Size == config.BusSize)
             {
                 total = totalHours * price.BusPricePerHour;
@@ -355,7 +352,7 @@ namespace Prague_Parking_2._1
             {
                 total = totalHours * price.CarPricePerHour;
             }
-            return Math.Round(total, 2);
+            return total;
 
         }
 
@@ -374,16 +371,16 @@ namespace Prague_Parking_2._1
             return true;
         }
 
-        public List<Vehicle> GetParkedVehicles()
+        public Dictionary<Vehicle, ParkingSpot> GetParkedVehicles()
         {
-            var list = new List<Vehicle>();
+            var list = new Dictionary<Vehicle, ParkingSpot>();
             foreach (var parkingspot in parkingList)
             {
                 foreach (var v in parkingspot.VehiclesParked)
                 {
                     if (v != null)
                     {
-                        list.Add(v);
+                        list.Add(v, parkingspot);
                     }
                 }
             }
@@ -395,19 +392,22 @@ namespace Prague_Parking_2._1
             var list = GetParkedVehicles();
             Console.CursorVisible = false;
             var table = new Table();
-            table.AddColumn(new TableColumn("[grey]Parked Vehicles, showing vehicletype, and reg.nr[/]").Centered()).Alignment(Justify.Center);
+            table.AddColumn(new TableColumn("[grey]Parked Vehicles, showing spotnumber, vehicletype, and reg.nr[/]").Centered()).Alignment(Justify.Center);
             AnsiConsole.Write(table);
             Table newTable = new Table();
             string parkedVehicles = "";
-            foreach (var vehicle in list)
+            foreach (var spot in list)
             {
-                parkedVehicles += vehicle.VehicleIdentifier + ":" + vehicle.RegNumber + " | ";
+                parkedVehicles += spot.Value + " " + spot.Key + " | ";
             }
             newTable.AddColumn(parkedVehicles);
             AnsiConsole.Write(newTable);
             Console.ReadKey();
         }
 
+        /// <summary>
+        /// printmethod, used to get a quick overview of the parklinlot, with colormarkings on each parkingspot, that determines the availability
+        /// </summary>
         public void ParkingLotOverview()
         {
             UserDialogue.PrintParkingLotTable();
@@ -441,10 +441,13 @@ namespace Prague_Parking_2._1
             Console.CursorVisible = true;
         }
 
+        /// <summary>
+        /// this method is used to show the current prices for the user
+        /// </summary>
         public void PrintPrice()
         {
             Console.CursorVisible = false;
-            List<string> prices = PriceConfiguration.GetPriceList();
+            List<string> prices = PriceConfiguration.GetPriceList(); // gets a list of prices from price text file
             var table = new Table();
             table.Expand();
             table.AddColumn(new TableColumn(new Markup("[green]Our prices[/]")).Alignment(Justify.Center));

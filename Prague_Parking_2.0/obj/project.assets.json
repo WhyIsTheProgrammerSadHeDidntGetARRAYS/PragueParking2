@@ -99,19 +99,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Admin\\.nuget\\packages\\": {}
+    "C:\\Users\\phili\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Admin\\source\\repos\\Prague_Parking_2.0_App\\Prague_Parking_2.0\\Prague_Parking_2.0.csproj",
+      "projectUniqueName": "C:\\Users\\phili\\source\\repos\\PragueParking2\\Prague_Parking_2.0\\Prague_Parking_2.0.csproj",
       "projectName": "Prague_Parking_2.0",
-      "projectPath": "C:\\Users\\Admin\\source\\repos\\Prague_Parking_2.0_App\\Prague_Parking_2.0\\Prague_Parking_2.0.csproj",
-      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Admin\\source\\repos\\Prague_Parking_2.0_App\\Prague_Parking_2.0\\obj\\",
+      "projectPath": "C:\\Users\\phili\\source\\repos\\PragueParking2\\Prague_Parking_2.0\\Prague_Parking_2.0.csproj",
+      "packagesPath": "C:\\Users\\phili\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\phili\\source\\repos\\PragueParking2\\Prague_Parking_2.0\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\phili\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -119,7 +124,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://www.nuget.org/api/v2/": {}
+        "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net5.0": {
@@ -161,7 +166,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
       }
     }
   }

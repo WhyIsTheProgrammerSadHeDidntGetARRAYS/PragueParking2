@@ -30,7 +30,19 @@ namespace Prague_Parking_2._1
             var data = JsonConvert.DeserializeObject<PriceConfiguration>(json);
             return data;
         }
-        
+        public void WriteToPriceConfig(string option, int newPrice)
+        {
+            if (!File.Exists(PricingPath))
+            {
+                throw new FileNotFoundException("The file 'Datafiles/config.json' could not be found");
+            }
+            string json = File.ReadAllText(PricingPath);
+            dynamic jsonObj = JsonConvert.DeserializeObject(json);
+            jsonObj[option] = newPrice;
+            string jsonConvert = JsonConvert.SerializeObject(jsonObj, Formatting.Indented);
+            File.WriteAllText(PricingPath, jsonConvert);
+        }
+
         public static List<string> GetPriceList()
         {
             List<string> priceList = File.ReadAllLines(PriceFilePath).ToList();

@@ -44,5 +44,10 @@ namespace Prague_Parking_2._1
 
             return validation.Success;
         }
+
+        public override string ToString() //en override strängmetod för fordon ska "skriva ut sig själv" med regnummer
+        {
+            return $"{VehicleIdentifier} : {RegNumber}";
+        }
     }
 }

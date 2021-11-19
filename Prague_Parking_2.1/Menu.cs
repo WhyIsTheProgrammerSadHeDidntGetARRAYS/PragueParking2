@@ -39,7 +39,7 @@ namespace Prague_Parking_2._1
                     break;
 
                 case "Remove Vehicle":
-                    parkinglot.CheckOut();
+                    parkinglot.RemoveVehicleFromParkingLot();
                     break;
 
                 case "Search for vehicle":

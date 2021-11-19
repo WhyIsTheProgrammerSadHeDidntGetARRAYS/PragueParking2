@@ -71,6 +71,10 @@ namespace Prague_Parking_2._1
             table.AddColumn(new TableColumn("[red]Vehicle is NOT present in the parkinglot[/]"));
             AnsiConsole.Write(table);
         }
+        public static void PrintConfirmPayment()
+        {
+
+        }
         /// <summary>
         /// Prints a table which is used when printing the parkinglot
         /// </summary>
@@ -131,14 +135,14 @@ namespace Prague_Parking_2._1
         public static void SpecifyPriceChange()
         {
             string selection = ChangePriceOptionsMenu();
-
+            PriceConfiguration config = new PriceConfiguration();
             switch (selection)
             {
                 case "Car Price":
                     int newCarPrice = GetTheNewPrice();
                     if(newCarPrice != -1)
                     {
-                        SetTheNewPrice("CarPricePerHour", newCarPrice);
+                        config.WriteToPriceConfig("CarPricePerHour", newCarPrice);
                     }
                     break;
 
@@ -146,7 +150,8 @@ namespace Prague_Parking_2._1
                     int newMcPrice = GetTheNewPrice();
                     if(newMcPrice != -1)
                     {
-                        SetTheNewPrice("MCPricePerHour", newMcPrice);
+                        //SetTheNewPrice("MCPricePerHour", newMcPrice);
+                        config.WriteToPriceConfig("MCPricePerHour", newMcPrice);
                     }
                     break;
 
@@ -154,7 +159,8 @@ namespace Prague_Parking_2._1
                     int newBikePrice = GetTheNewPrice();
                     if (newBikePrice != -1)
                     {
-                        SetTheNewPrice("BikePricePerHour", newBikePrice);
+                        //SetTheNewPrice("BikePricePerHour", newBikePrice);
+                        config.WriteToPriceConfig("BikePricePerHour", newBikePrice);
                     }
                     break;
 
@@ -162,7 +168,8 @@ namespace Prague_Parking_2._1
                     int newBusPrice = GetTheNewPrice();
                     if (newBusPrice != -1)
                     {
-                        SetTheNewPrice("BusPricePerHour", newBusPrice);
+                        //SetTheNewPrice("BusPricePerHour", newBusPrice);
+                        config.WriteToPriceConfig("BusPricePerHour", newBusPrice);
                     }
                     break;
 

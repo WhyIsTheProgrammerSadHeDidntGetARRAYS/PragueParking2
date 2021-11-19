@@ -20,17 +20,25 @@ namespace Prague_Parking_2._1
 
         private const string ConfigFilePath = @"../../../Datafiles/config.json";
 
-        public static ParkingConfiguration ReadParkingConfig() //konstruktorn kan ropa på denna, ta bort static
+        public static ParkingConfiguration ReadParkingConfig() //method to read from json configfile
         {
             if (!File.Exists(ConfigFilePath))
             {
                 throw new FileNotFoundException("The file 'Datafiles/config.json' could not be found"); 
             }
-            string json = File.ReadAllText(ConfigFilePath);
-            var data = JsonConvert.DeserializeObject<ParkingConfiguration>(json);
-            return data;
+            try
+            {
+                string json = File.ReadAllText(ConfigFilePath);
+                var data = JsonConvert.DeserializeObject<ParkingConfiguration>(json);
+                return data;
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            return null;
         }
-        public void WriteToParkingConfig(int parkingspots)
+        public void WriteToParkingConfig(int parkingspots) //this method is used to let the user modify the amount of parkingspots
         {
             if (!File.Exists(ConfigFilePath))
             {
